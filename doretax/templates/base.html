@@ -1,30 +1,38 @@
 <!DOCTYPE HTML>
 <html>
-	<head>
-		<meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
-		<meta name='description' content='' />
-		<meta name='keywords' content='' />
-		<link type='text/css' rel='stylesheet' href='{{ STATIC_URL }}css/styles.css'/>
-		<link type='image/x-icon' rel="icon" href='{{ STATIC_URL }}images/fav.ico' />
-		<title>{% block title %}{% endblock %}Dor&eacute; &amp; Company</title>
-		{% include "scripts.html" %}
-	</head>
-	<body>
-		<div id='container'>
-			{% include "header.html" %}
-			<div id='main'>
-				<div id='image-banner'>
-					<img src='{{ STATIC_URL }}images/lloyd.jpg' /><img class='middle' src='{{ STATIC_URL }}images/books.jpg' /><img src='{{ STATIC_URL }}images/sign.jpg' />
-				</div>
-				{% include "nav.html" %}
-				<div class='center'>
-					{% block center %}{% endblock %}
-				</div>
-				<div class='right'>
-					{% block right %}{% include "default-right.html" %}{% endblock %}
-				</div>
-			</div>
-			{% include "footer.html" %}
-		</div>
-	</body>
+    <head>
+        <meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
+        <meta name='description' content='' />
+        <meta name='keywords' content='' />
+        <link type='text/css' rel='stylesheet' href='{{ STATIC_URL }}css/styles.css'/>
+        <link type='image/x-icon' rel="icon" href='{{ STATIC_URL }}images/fav.ico' />
+        <script type="text/javascript" src="http://use.typekit.com/fgu4koc.js">
+        </script>
+        <script type="text/javascript">
+            try {
+                Typekit.load();
+            } 
+            catch (e) {
+            }
+        </script>
+        <title>{% block title %}{% endblock %}Dor&eacute; &amp; Company</title>
+        {% include "scripts.html" %}
+    </head>
+    <body>
+        <div id='container'>
+            {% include "header.html" %}
+            <div id='main'>
+                <div id='image-banner'>
+                    <img src='{{ STATIC_URL }}images/lloyd.jpg' /><img class='middle' src='{{ STATIC_URL }}images/books.jpg' /><img src='{{ STATIC_URL }}images/sign.jpg' />
+                </div>{% include "nav.html" %}
+                <div class='center'>
+                    {% block center %}{% endblock %}
+                </div>
+                <div class='right'>
+                    {% block right %}{% include "default-right.html" %}{% endblock %}
+                </div>
+            </div>
+            {% include "footer.html" %}
+        </div>
+    </body>
 </html>
