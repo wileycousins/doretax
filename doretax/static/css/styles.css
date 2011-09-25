@@ -1,4 +1,4 @@
-body {
+.gradient-body {
     /*Gradient code*/
     /* For WebKit (Safari, Google Chrome etc) */
     background: -webkit-gradient(linear, center bottom, center top, from(#EEE), to(#FFF), color-stop(0.01, #EEE));
@@ -72,7 +72,6 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=#FF0000FF, endC
 	padding-left: 85px;
 	width: 530px;
 	height: 30px;
-	background-color:
 }
 #contact-bar h5{
 	color: #221F72;
@@ -127,6 +126,10 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=#FF0000FF, endC
 #nav *{
 	line-height: 1.5em;
 	font-variant: small-caps;
+}
+#nav *:hover{
+    cursor: pointer;
+    color: #676767;
 }
 
 #main > div.center{
@@ -207,7 +210,9 @@ div.right p {
 	font-variant: small-caps;
 	color: #221F72;
 }
-
+.current-page{
+	color: #676767;
+}
 .all-caps{
 	font-variant: small-caps;
 }
