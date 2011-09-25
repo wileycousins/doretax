@@ -55,6 +55,7 @@ function init(){
                 $('.center').animate({
                     opacity: 1
                 }, fadeDelay);
+				init();
             });
         }, fadeDelay);
     });
