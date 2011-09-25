@@ -3,6 +3,7 @@ from doretax import settings
  
 common_args = {
                'STATIC_URL' : settings.STATIC_URL,
+               'base_template' : "base.html",
                } 
 
 all_pages = ('about.html', 'contact.html', 'home.html', 'client-center.html', 'community.html')
@@ -27,6 +28,7 @@ def get(request, page):
         raise Http404
     args = {}
     args.update(csrf(request))
+    args['base_template'] = "base-ajax.html"
     if page == '' or page == '/':
         page = 'home'
     page = "%s.html" % page
