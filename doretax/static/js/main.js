@@ -19,7 +19,7 @@ navigator.userAgent.match(/iPod/i)) {
 function leave(event){
     event.preventDefault();
     window.setTimeout(function(){
-        $('.center').animate({
+        $('.center').stop().animate({
             opacity: 0
         }, fadeDelay);
     }, 10);
@@ -68,10 +68,8 @@ function init(){
         }
         window.setTimeout(function(){
             $.get('/get' + nextPage, function(data){
-                var title = $('title').text();
-                title = title.split('|');
-                title[0] = $($(data)[0]).text();
-                $('title').text(title[0] + title[1]);
+                var title = $($(data)[0]).text();
+                $('title').text(title);
                 var html = '';
                 data = $(data);
                 for (var i = 0; i < $(data).length; i++) {
@@ -81,7 +79,7 @@ function init(){
                     }
                 }
                 $('.center').html(html);
-                $('.center').animate({
+                $('.center').stop().animate({
                     opacity: 1
                 }, fadeDelay);
                 init();
