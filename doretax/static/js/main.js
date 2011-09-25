@@ -5,6 +5,7 @@ jQuery.event.add(window, 'unload', leave);
 //Current page = loc
 var loc;
 var isMobile = false;
+var isIE = false;
 var fadeDelay = 1500;
 var changing = false;
 
@@ -14,6 +15,10 @@ navigator.userAgent.match(/webOS/i) ||
 navigator.userAgent.match(/iPhone/i) ||
 navigator.userAgent.match(/iPod/i)) {
     isMobile = true;
+}
+
+if (jQuery.browser.msie) {
+    isIE = true;
 }
 
 function animateOut(){
@@ -31,6 +36,14 @@ function leave(event){
 }
 
 function animateIn(loc){
+	$('.current-page').removeClass('current-page');
+	if(loc == '/'){
+        var id = '#home';
+    }
+    else{
+		var id = '#'+loc.replace('/','');
+    }
+	$(id).children().addClass('current-page');
     $.get('/get' + loc, function(data){
         var title = $($(data)[0]).text();
         $('title').text(title);
@@ -78,10 +91,22 @@ function resize(){
 
 function init(){
     resize();
+    if (isIE) {
+        $('.gradient-gray').removeClass('gradient-gray');
+        $('.gradient-body').removeClass('gradient-body');
+        $('body').add('div').addClass('ie');
+    }
     //Current page = loc
     loc = window.location + "";
     loc = loc.split('/');
     loc = loc[loc.length - 1];
+	if(loc == ''){
+		var id = '#home';
+	}
+	else{
+		var id = '#'+loc;
+	}
+	$(id).children().addClass('current-page');
     $('a:not(.no-link)').unbind('click');
     $('a:not(.no-link)').bind('click', function(event){
         changing = true;

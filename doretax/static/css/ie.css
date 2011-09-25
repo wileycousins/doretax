@@ -1,0 +1,31 @@
+#contact-bar.ie > div.ie{
+    margin: 0px auto;
+    padding-top: 10px;
+    left: 45px;
+    width: 640px;
+    height: 30px;
+}
+
+#footer.ie{
+    position: relative;
+    margin-top: 5px;
+    height: 240px;
+    padding-left: 220px;
+}
+
+#footer.ie > div.ie{
+    position: relative;
+    float: left;
+    width: 200px;
+    padding: 10px;
+    margin-right: 10px;
+}
+#footer.ie > div.small.ie{
+    width: 120px;
+}
+
+#footer h3, #footer a{
+    font-size: .9em;
+    font-variant: small-caps;
+    color: #221F72;
+}
