@@ -5,6 +5,7 @@ jQuery.event.add(window, 'unload', leave);
 //Current page = loc
 var loc;
 var isMobile = false;
+var fadeDelay = 300;
 
 //Checking for mobile browser
 if (navigator.userAgent.match(/Android/i) ||
@@ -19,11 +20,31 @@ function leave(event){
     window.setTimeout(function(){
         $('.center').animate({
             opacity: 0
-        }, 300);
+        }, fadeDelay);
     }, 10);
 }
 
+function watchURLChange() {
+    var tmploc = window.location + "";
+    tmploc = tmploc.split('/');
+    tmploc = tmploc[tmploc.length - 1];
+    if(changing) {
+        window.setTimeout("watchURLChange();", (leftDelay + downDelay) * 2);
+    } else {
+        if(loc !== tmploc) {
+            window.location = window.location;
+        } else {
+            window.setTimeout("watchURLChange();", 100);
+        }
+    }
+}
+
+function resize(){
+    $('#nav').height($('div.right').height() - 20);
+}
+
 function init(){
+	watchURLChange();
     resize();
     //Current page = loc
     loc = window.location + "";
@@ -33,22 +54,37 @@ function init(){
     $('a:not(.no-link)').bind('click', function(event){
         leave(event);
         nextPage = $(this).attr('href');
-		if(nextPage == ''){
-			nextPage = 'home';
-		}
+        if (nextPage == '') {
+            nextPage = 'home';
+        }
         if (Modernizr.history) {
             var stateObject = nextPage;
-            window.history.pushState(stateObject, "Decode72", nextPage);
+            window.history.pushState(stateObject, "Dor&eacute; Tax", nextPage);
         }
         else {
             window.location.href = nextPage;
         }
-        $.get('/get' + nextPage, function(data){
-			$('.center').html(data);
-        });
+        window.setTimeout(function(){
+            $.get('/get' + nextPage, function(data){
+                var title = $('title').text();
+                title = title.split('|');
+                title[0] = $($(data)[1]).text();
+                $('title').text(title[0] + title[1]);
+                var html = '';
+                data = $(data);
+                for (var i = 0; i < $(data).length; i++) {
+                    var id = $(data[i]).attr('id');
+                    console.log(id);
+                    if (id == 'content') {
+                            html += $(data[i]).html();
+                    }
+                }
+                $('.center').html(html);
+                $('.center').animate({
+                    opacity: 1
+                }, fadeDelay);
+                init();
+            });
+        }, fadeDelay);
     });
-}
-
-function resize(){
-    $('#nav').height($('div.right').height() - 20);
 }
