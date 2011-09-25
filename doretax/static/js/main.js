@@ -70,7 +70,7 @@ function init(){
             $.get('/get' + nextPage, function(data){
                 var title = $('title').text();
                 title = title.split('|');
-                title[0] = $($(data)[1]).text();
+                title[0] = $($(data)[0]).text();
                 $('title').text(title[0] + title[1]);
                 var html = '';
                 data = $(data);

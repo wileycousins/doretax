@@ -15,7 +15,6 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=#FF0000FF, endC
 	width: 990px;
 	margin: 10px auto;
 	background-color: #FFF;
-	border: 1px solid #676767;
 }
 #stripe{
 	position: absolute;
