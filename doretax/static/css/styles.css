@@ -1,6 +1,5 @@
 body{
 /*Gradient code*/
-color: #EEE;
 /* For WebKit (Safari, Google Chrome etc) */
 background: -webkit-gradient(linear, center bottom, center top, from(#EEE), to(#FFF), color-stop(0.01, #EEE));
 /* For Mozilla/Gecko (Firefox etc) */
@@ -16,7 +15,6 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=#FF0000FF, endC
 	width: 990px;
 	margin: 10px auto;
 	background-color: #FFF;
-	border: 1px solid #676767;
 }
 #stripe{
 	position: absolute;

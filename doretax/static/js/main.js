@@ -70,13 +70,12 @@ function init(){
             $.get('/get' + nextPage, function(data){
                 var title = $('title').text();
                 title = title.split('|');
-                title[0] = $($(data)[1]).text();
+                title[0] = $($(data)[0]).text();
                 $('title').text(title[0] + title[1]);
                 var html = '';
                 data = $(data);
                 for (var i = 0; i < $(data).length; i++) {
                     var id = $(data[i]).attr('id');
-                    console.log(id);
                     if (id == 'content') {
                             html += $(data[i]).html();
                     }
