@@ -1,20 +1,28 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-		<meta name="description" content="We are a small team of young professionals based in Baton Rouge, LA with a passion for making a more inviting, intuitive, and generally more awesome web." />
-		<meta name="keywords" content="web design,design,web,decode72,decode 72,software development,CMS,content management systems,mobile,apps,graphic design,baton rouge,LA,louisiana,interactive design,web page design,web site design,web site development,website design,phillip winfield,cole wiley,zack dever" />
-		<link href="{{ STATIC_URL }}css/styles.css" type="text/css" rel="stylesheet"/>
-		<link rel="icon" href="{{ STATIC_URL }}images/fav.ico" type="image/x-icon" />
+		<meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
+		<meta name='description' content='' />
+		<meta name='keywords' content='' />
+		<link type='text/css' rel='stylesheet' href='{{ STATIC_URL }}css/styles.css'/>
+		<link type='image/x-icon' rel="icon" href='{{ STATIC_URL }}images/fav.ico' />
 		<title>{% block title %}{% endblock %}Dore' &amp; Company</title>
 		{% include "scripts.html" %}
 	</head>
 	<body>
-		<div id="container">
+		<div id='container'>
 			{% include "header.html" %}
-			<div id="main">
+			<div id='main'>
+				<div id='image-banner'>
+					<img src='{{ STATIC_URL }}images/lloyd.jpg' /><img class='middle' src='{{ STATIC_URL }}images/books.jpg' /><img src='{{ STATIC_URL }}images/sign.jpg' />
+				</div>
 				{% include "nav.html" %}
-				{% block content %}{% endblock %}
+				<div class='center'>
+					{% block center %}{% endblock %}
+				</div>
+				<div class='right'>
+					{% block right %}{% endblock %}
+				</div>
 			</div>
 			{% include "footer.html" %}
 		</div>
