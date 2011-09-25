@@ -5,7 +5,8 @@ jQuery.event.add(window, 'unload', leave);
 //Current page = loc
 var loc;
 var isMobile = false;
-var fadeDelay = 300;
+var fadeDelay = 600;
+var changing = false;
 
 //Checking for mobile browser
 if (navigator.userAgent.match(/Android/i) ||
@@ -29,7 +30,7 @@ function watchURLChange() {
     tmploc = tmploc.split('/');
     tmploc = tmploc[tmploc.length - 1];
     if(changing) {
-        window.setTimeout("watchURLChange();", (leftDelay + downDelay) * 2);
+        window.setTimeout("watchURLChange();", fadeDelay * 5);
     } else {
         if(loc !== tmploc) {
             window.location = window.location;
@@ -44,7 +45,6 @@ function resize(){
 }
 
 function init(){
-	watchURLChange();
     resize();
     //Current page = loc
     loc = window.location + "";
@@ -52,6 +52,8 @@ function init(){
     loc = loc[loc.length - 1];
     $('a:not(.no-link)').unbind('click');
     $('a:not(.no-link)').bind('click', function(event){
+		changing = true;
+		window.setTimeout("changing = false;", fadeDelay * 3);
         leave(event);
         nextPage = $(this).attr('href');
         if (nextPage == '') {
@@ -87,4 +89,5 @@ function init(){
             });
         }, fadeDelay);
     });
+	watchURLChange();
 }
