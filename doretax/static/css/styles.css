@@ -56,7 +56,7 @@
 	height: 30px;
 	background-color:
 }
-#contact-bar > div *{
+#contact-bar h5{
 	color: #221F72;
 	font-size: 15px;
 	font-weight: 500;
@@ -189,6 +189,10 @@ div.right p {
 	font-variant: small-caps;
 }
 
+*.number{
+	font-size: .8em;
+}
+
 .gradient-gray {
 /*Gradient code*/
 color: #BBB;
@@ -229,9 +233,11 @@ li{
 a{
 	text-decoration: none;
 	font-weight: 500;
+	color: #221F72;
 }
 
 *{
+	font-family: Adobe Garamnond Pro, serif;
 	margin: 0;
 	padding: 0;
 	border: 0;
