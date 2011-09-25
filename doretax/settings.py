@@ -14,7 +14,8 @@ MEDIA_URL = '/site_media/media/'
 STATIC_URL = '/site_media/static/'
 
 ADMIN_MEDIA_PREFIX = os.path.join(STATIC_URL, 'admin')
-sys.path.append(os.path.join(PROJECT_ROOT, 'apps/'))
+#sys.path.append(os.path.join(PROJECT_ROOT, 'apps/'))
+sys.path.append(PROJECT_ROOT)
  
 ADMINS = (
     ('Cole Wiley', 'cole@decode72.com'),

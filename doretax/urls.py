@@ -1,11 +1,18 @@
 from django.conf.urls.defaults import *
-
-# Uncomment the next two lines to enable the admin:
-# from django.contrib import admin
-# admin.autodiscover()
+from django.contrib import admin 
+from django.views.generic.simple import redirect_to, direct_to_template
+admin.autodiscover()
 
 urlpatterns = patterns('',
-    # Example:
+    (r'^$', 'views.home'),
+    (r'^about$', 'views.about'),
+    (r'^client-center$', 'views.client_center'),
+    (r'^community$', 'views.community'),
+    (r'^contact$', 'views.contact'),
+    
+    (r'^favicon.ico$', redirect_to, {'url': '/site_media/static/images/fav.ico'}),
+    (r'^robots.txt$', direct_to_template, {'template':'robots.txt', 'mimetype':'text/plain'}),
+    (r'^sitemap.txt$', direct_to_template, {'template':'sitemap.txt', 'mimetype':'text/plain'}),
     # (r'^doretax/', include('doretax.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
