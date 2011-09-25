@@ -1,7 +1,7 @@
-body{
-/*Gradient code*/
-/* For WebKit (Safari, Google Chrome etc) */
-background: -webkit-gradient(linear, center bottom, center top, from(#EEE), to(#FFF), color-stop(0.01, #EEE));
+body {
+    /*Gradient code*/
+    /* For WebKit (Safari, Google Chrome etc) */
+    background: -webkit-gradient(linear, center bottom, center top, from(#EEE), to(#FFF), color-stop(0.01, #EEE));
 /* For Mozilla/Gecko (Firefox etc) */
 background: -moz-linear-gradient(bottom, #EEE, #FFF 75%);
 /* For Internet Explorer 5.5 - 7 */
@@ -21,6 +21,7 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=#FF0000FF, endC
 	top: 55px;
 	width: 100%;
 	border-top: 20px solid #221F72;
+	z-index: -1;
 }
 
 #header{
@@ -29,6 +30,8 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=#FF0000FF, endC
 	height: 125px;
 	border-top: 4px solid #221F72;
 	border-bottom: 4px solid #221F72;
+	background-color: #FFF;
+	z-index: 1;
 }
 
 #logo{
@@ -37,8 +40,9 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=#FF0000FF, endC
     height: 100px;
     border-left: 1px solid #888;
     border-right: 1px solid #888;
-    background-color: #FFF;
+	background-color: #FFF;
     text-align: left;
+	z-index: 2;
 }
 
 #logo img{
@@ -47,11 +51,12 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=#FF0000FF, endC
 	top: 13px;
 }
 
-#header div.text{
+#logo div.text{
 	position: relative;
 	top: -70px;
 	margin-left: 165px;
 	color: #221F72;
+	background-color: #FFF;
 	line-height: 2em;
 }
 
@@ -87,6 +92,8 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=#FF0000FF, endC
 	top: 10px;
 	height: 210px;
 	margin-bottom: 40px;
+	background-color: #FFF;
+	z-index: 1;
 }
 
 #image-banner img{
@@ -112,6 +119,8 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=#FF0000FF, endC
 	height: inherit;
 	min-height: 600px;
 	border-right: 1px solid #221F72;
+	background-color: #FFF;
+	z-index: 1;
 	text-align: right;
 	padding-right: 20px;
 }
@@ -125,6 +134,7 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=#FF0000FF, endC
     float: left;
     width: 530px;
     margin-left: 10px;
+	z-index: 0;
 }
 
 div.page-heading-text{
