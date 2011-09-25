@@ -76,7 +76,6 @@ function init(){
                 data = $(data);
                 for (var i = 0; i < $(data).length; i++) {
                     var id = $(data[i]).attr('id');
-                    console.log(id);
                     if (id == 'content') {
                             html += $(data[i]).html();
                     }

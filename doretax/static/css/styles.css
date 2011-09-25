@@ -1,6 +1,5 @@
 body{
 /*Gradient code*/
-color: #EEE;
 /* For WebKit (Safari, Google Chrome etc) */
 background: -webkit-gradient(linear, center bottom, center top, from(#EEE), to(#FFF), color-stop(0.01, #EEE));
 /* For Mozilla/Gecko (Firefox etc) */
