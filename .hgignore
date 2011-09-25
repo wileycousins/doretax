@@ -11,4 +11,4 @@ whoosh_index
 gallery/*
 *.bak
 *.swp
-
+*.db
