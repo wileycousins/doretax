@@ -5,6 +5,7 @@ jQuery.event.add(window, 'unload', leave);
 //Current page = loc
 var loc;
 var isMobile = false;
+var fadeDelay = 300;
 
 //Checking for mobile browser
 if (navigator.userAgent.match(/Android/i) ||
@@ -19,7 +20,7 @@ function leave(event){
     window.setTimeout(function(){
         $('.center').animate({
             opacity: 0
-        }, 300);
+        }, fadeDelay);
     }, 10);
 }
 
@@ -33,19 +34,29 @@ function init(){
     $('a:not(.no-link)').bind('click', function(event){
         leave(event);
         nextPage = $(this).attr('href');
-		if(nextPage == ''){
-			nextPage = 'home';
-		}
+        if (nextPage == '') {
+            nextPage = 'home';
+        }
         if (Modernizr.history) {
             var stateObject = nextPage;
-            window.history.pushState(stateObject, "Decode72", nextPage);
+            window.history.pushState(stateObject, "Dor&eacute; Tax", nextPage);
         }
         else {
             window.location.href = nextPage;
         }
-        $.get('/get' + nextPage, function(data){
-			$('.center').html(data);
-        });
+        window.setTimeout(function(data){
+            $.get(nextPage, function(data){
+				var title = $('title').text();
+				title = title.split('|');
+				console.log(title[0]+title[1]);
+				title[0] = $(data).find('#hidden-title').text();
+				$('title').text(title[0]+title[1]);
+                $('.center').html($(data).find('.center').html());
+                $('.center').animate({
+                    opacity: 1
+                }, fadeDelay);
+            });
+        }, fadeDelay);
     });
 }
 
