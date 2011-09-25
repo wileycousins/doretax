@@ -24,7 +24,27 @@ function leave(event){
     }, 10);
 }
 
+function watchURLChange() {
+    var tmploc = window.location + "";
+    tmploc = tmploc.split('/');
+    tmploc = tmploc[tmploc.length - 1];
+    if(changing) {
+        window.setTimeout("watchURLChange();", (leftDelay + downDelay) * 2);
+    } else {
+        if(loc !== tmploc) {
+            window.location = window.location;
+        } else {
+            window.setTimeout("watchURLChange();", 100);
+        }
+    }
+}
+
+function resize(){
+    $('#nav').height($('div.right').height() - 20);
+}
+
 function init(){
+	watchURLChange();
     resize();
     //Current page = loc
     loc = window.location + "";
@@ -44,23 +64,27 @@ function init(){
         else {
             window.location.href = nextPage;
         }
-        window.setTimeout(function(data){
-            $.get(nextPage, function(data){
-				var title = $('title').text();
-				title = title.split('|');
-				console.log(title[0]+title[1]);
-				title[0] = $(data).find('#hidden-title').text();
-				$('title').text(title[0]+title[1]);
-                $('.center').html($(data).find('.center').html());
+        window.setTimeout(function(){
+            $.get('/get' + nextPage, function(data){
+                var title = $('title').text();
+                title = title.split('|');
+                title[0] = $($(data)[1]).text();
+                $('title').text(title[0] + title[1]);
+                var html = '';
+                data = $(data);
+                for (var i = 0; i < $(data).length; i++) {
+                    var id = $(data[i]).attr('id');
+                    console.log(id);
+                    if (id == 'content') {
+                            html += $(data[i]).html();
+                    }
+                }
+                $('.center').html(html);
                 $('.center').animate({
                     opacity: 1
                 }, fadeDelay);
-				init();
+                init();
             });
         }, fadeDelay);
     });
-}
-
-function resize(){
-    $('#nav').height($('div.right').height() - 20);
 }

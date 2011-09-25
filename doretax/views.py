@@ -1,5 +1,6 @@
 from django.shortcuts import render_to_response
 from doretax import settings
+from django.core.context_processors import csrf
  
 common_args = {
                'STATIC_URL' : settings.STATIC_URL,
@@ -24,8 +25,8 @@ def contact(request):
     return render_to_response('contact.html', common_args)
 
 def get(request, page):
-    if not request.is_ajax():
-        raise Http404
+#    if not request.is_ajax():
+#        raise Http404
     args = {}
     args.update(csrf(request))
     args['base_template'] = "base-ajax.html"
