@@ -1,0 +1,7 @@
+example:
+http://decode72.com/
+http://decode72.com/about
+http://decode72.com/work
+http://decode72.com/work-gdhit
+http://decode72.com/work-artists
+http://decode72.com/contact

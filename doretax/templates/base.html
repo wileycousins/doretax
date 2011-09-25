@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="description" content="We are a small team of young professionals based in Baton Rouge, LA with a passion for making a more inviting, intuitive, and generally more awesome web." />
+		<meta name="keywords" content="web design,design,web,decode72,decode 72,software development,CMS,content management systems,mobile,apps,graphic design,baton rouge,LA,louisiana,interactive design,web page design,web site design,web site development,website design,phillip winfield,cole wiley,zack dever" />
+		<link href="{{ STATIC_URL }}css/styles.css" type="text/css" rel="stylesheet"/>
+		<link rel="icon" href="{{ STATIC_URL }}images/fav.ico" type="image/x-icon" />
+		<title>{% block title %}{% endblock %}Dore' &amp; Company</title>
+		{% include "scripts.html" %}
+	</head>
+	<body>
+		<div id="container">
+			{% include "header.html" %}
+			<div id="main">
+				{% include "nav.html" %}
+				{% block content %}{% endblock %}
+			</div>
+			{% include "footer.html" %}
+		</div>
+	</body>
+</html>
