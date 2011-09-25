@@ -25,17 +25,40 @@ function leave(event){
     }, 10);
 }
 
-function watchURLChange() {
+function watchURLChange(){
     var tmploc = window.location + "";
     tmploc = tmploc.split('/');
     tmploc = tmploc[tmploc.length - 1];
-    if(changing) {
+    if (changing) {
         window.setTimeout("watchURLChange();", fadeDelay * 5);
-    } else {
-        if(loc !== tmploc) {
-            window.location = window.location;
-        } else {
-            window.setTimeout("watchURLChange();", 100);
+    }
+    else {
+        if (loc !== tmploc) {
+            $('.center').stop().animate({
+                opacity: 0
+            }, fadeDelay);
+            window.setTimeout(function(){
+                $.get('/get/' + tmploc, function(data){
+                    var title = $($(data)[0]).text();
+                    $('title').text(title);
+                    var html = '';
+                    data = $(data);
+                    for (var i = 0; i < $(data).length; i++) {
+                        var id = $(data[i]).attr('id');
+                        if (id == 'content') {
+                            html += $(data[i]).html();
+                        }
+                    }
+                    $('.center').html(html);
+                    $('.center').stop().animate({
+                        opacity: 1
+                    }, fadeDelay);
+                    init();
+                });
+            }, fadeDelay);
+        }
+        else {
+            window.setTimeout("watchURLChange();", 80);
         }
     }
 }
@@ -52,8 +75,8 @@ function init(){
     loc = loc[loc.length - 1];
     $('a:not(.no-link)').unbind('click');
     $('a:not(.no-link)').bind('click', function(event){
-		changing = true;
-		window.setTimeout("changing = false;", fadeDelay * 3);
+        changing = true;
+        window.setTimeout("changing = false;", fadeDelay * 3);
         leave(event);
         nextPage = $(this).attr('href');
         if (nextPage == '') {
@@ -75,7 +98,7 @@ function init(){
                 for (var i = 0; i < $(data).length; i++) {
                     var id = $(data[i]).attr('id');
                     if (id == 'content') {
-                            html += $(data[i]).html();
+                        html += $(data[i]).html();
                     }
                 }
                 $('.center').html(html);
@@ -83,8 +106,8 @@ function init(){
                     opacity: 1
                 }, fadeDelay);
                 init();
-            });
+            },'getting a page');
         }, fadeDelay);
     });
-	watchURLChange();
+    watchURLChange();
 }
