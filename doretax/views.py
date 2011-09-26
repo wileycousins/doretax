@@ -12,7 +12,7 @@ def default(request, page):
             }
     args.update(csrf(request))
     if page.endswith('/'):
-        return check_for_slash(request, page)
+        return check_without_slash(request, page)
     if page == '':
         page = 'home'
     page = "%s.html" % page
@@ -39,7 +39,6 @@ def get(request, page):
     else:
         raise Http404
     
-def check_for_slash(request, page):
-    #return redirect('default', {page=page[:-1] : request=request})
-    raise Http404
+def check_without_slash(request, page):
+    return redirect('views.default', page=page.rstrip('/'))
     
