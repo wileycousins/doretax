@@ -12,3 +12,4 @@ gallery/*
 *.bak
 *.swp
 *.db
+*.sqlite

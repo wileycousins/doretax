@@ -14,7 +14,6 @@ MEDIA_URL = '/site_media/media/'
 STATIC_URL = '/site_media/static/'
 
 ADMIN_MEDIA_PREFIX = os.path.join(STATIC_URL, 'admin')
-#sys.path.append(os.path.join(PROJECT_ROOT, 'apps/'))
 sys.path.append(PROJECT_ROOT)
  
 ADMINS = (
@@ -27,7 +26,7 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'sqlite3.db',                      # Or path to database file if using sqlite3.
+        'NAME': 'doretax.sqlite',                      # Or path to database file if using sqlite3.
         'USER': '',                      # Not used with sqlite3.
         'PASSWORD': '',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
@@ -95,6 +94,7 @@ INSTALLED_APPS = (
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.staticfiles',
+    'biz',
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
