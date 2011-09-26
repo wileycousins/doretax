@@ -34,16 +34,25 @@ div.copy.ie li{
 #footer.ie > div.ie{
     position: relative;
     float: left;
-    width: 200px;
+    width: 180px;
     padding: 10px;
     margin-right: 10px;
 }
 #footer.ie > div.small.ie{
-    width: 120px;
+    width: 100px;
 }
 
 #footer h3, #footer a{
     font-size: .9em;
     font-variant: small-caps;
     color: #221F72;
+}
+div.page-heading-text.ie p{
+	font-size: 1.1em;
+}
+div.copy.ie p{
+	font-size: .9em;
+}
+body.ie h2{
+    font-size: 1em;
 }

@@ -136,7 +136,7 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=#FF0000FF, endC
     position: relative;
     float: left;
     width: 530px;
-    left: 10px;
+    margin-left: 10px;
 	z-index: 0;
 }
 
@@ -190,7 +190,7 @@ div.right p {
 #footer{
 	position: relative;
 	margin-top: 5px;
-	height: 240px;
+	height: 100px;
 	padding-left: 220px;
 }
 
