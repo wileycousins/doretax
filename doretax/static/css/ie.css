@@ -26,7 +26,6 @@ div.copy.ie li{
     position: relative;
     top: 0px;
 	width: 770px;
-    height: 240px;
     padding-left: 220px;
 	background-color: #DDD;
 }
@@ -34,15 +33,15 @@ div.copy.ie li{
 #footer.ie > div.ie{
     position: relative;
     float: left;
-    width: 180px;
+    width: 185px;
     padding: 10px;
     margin-right: 10px;
 }
 #footer.ie > div.small.ie{
-    width: 100px;
+    width: 90px;
 }
 
-#footer h3, #footer a{
+#footer.ie h3, #footer.ie a{
     font-size: .9em;
     font-variant: small-caps;
     color: #221F72;

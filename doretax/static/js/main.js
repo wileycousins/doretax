@@ -98,6 +98,10 @@ function resize(){
 function init(){
     resize();
     if (isIE) {
+		if(!navigator.userAgent.match('MSIE 9.0')){
+			$('#image-banner').width(1000);
+		}
+//		if (jQuery.browser.msie.version) {
         $('.gradient-gray').removeClass('gradient-gray');
 		$('#footer').removeClass('gradient-gray');
         $('.gradient-body').removeClass('gradient-body');
