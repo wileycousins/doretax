@@ -86,6 +86,12 @@ function watchURLChange(){
 }
 
 function resize(){
+	if($('.right').height() + 225 > $('#main').height()){
+	   if(isIE)
+		  $('#main').height($('.right').height() + 250);
+	   else
+	      $('#main').height($('.right').height() + 225);
+	}
     $('#nav').height($('div.right').height() - 20);
 }
 
@@ -93,6 +99,7 @@ function init(){
     resize();
     if (isIE) {
         $('.gradient-gray').removeClass('gradient-gray');
+		$('#footer').removeClass('gradient-gray');
         $('.gradient-body').removeClass('gradient-body');
         $('body').add('div').addClass('ie');
     }
