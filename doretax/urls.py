@@ -6,7 +6,7 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     (r'^favicon.ico$', redirect_to, {'url': '/site_media/static/images/fav.ico'}),
-    (r'^get/(?P<page>.*)$', 'views.get'),
+    (r'^get/(?P<page>.*)/?$', 'views.get'),
     # Uncomment the admin/doc line below to enable admin documentation:
     # (r'^admin/doc/', include('django.contrib.admindocs.urls')),
     (r'^$', 'views.default', {'page':'home'}),

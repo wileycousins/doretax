@@ -29,7 +29,9 @@ def get(request, page):
             'base_template' : "base-ajax.html",
             }
     args.update(csrf(request))
-    if page == '' or page == '/':
+    if page.endswith('/'):
+        page = page[:-1]
+    if page == '':
         page = 'home'
     page = "%s.html" % page
     if page in all_pages:
