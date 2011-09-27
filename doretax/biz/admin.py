@@ -1,8 +1,8 @@
-from biz.models import Association, AssocAppointment, Service, Links, ContactInfo
+from biz.models import Association, AssocPosition, Service, Link, ContactInfo
 from django.contrib import admin
 
 admin.site.register(Association)
-admin.site.register(AssocAppointment)
+admin.site.register(AssocPosition)
 admin.site.register(Service)
-admin.site.register(Links)
+admin.site.register(Link)
 admin.site.register(ContactInfo)

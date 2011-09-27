@@ -7,13 +7,13 @@ TEMPLATE_DEBUG = DEBUG
 
 # root directories
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
-MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media')
-STATIC_ROOT = os.path.join(PROJECT_ROOT, 'collected-static')
+MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media/')
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'collected-static/')
 # urls
 MEDIA_URL = '/site_media/media/'
 STATIC_URL = '/site_media/static/'
 
-ADMIN_MEDIA_PREFIX = os.path.join(STATIC_URL, 'admin')
+ADMIN_MEDIA_PREFIX = os.path.join(STATIC_URL, 'admin/')
 sys.path.append(PROJECT_ROOT)
  
 ADMINS = (
@@ -57,11 +57,6 @@ USE_I18N = False
 # calendars according to the current locale
 USE_L10N = True
 
-# URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
-# trailing slash.
-# Examples: "http://foo.com/media/", "/media/".
-ADMIN_MEDIA_PREFIX = '/media/'
-
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = 'xx6ew5*1z2b@$9t1jx*h2qlss9t85pvsq7ce=!#z)ugc)n&t4j'
 
@@ -82,23 +77,27 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'doretax.urls'
 
 TEMPLATE_DIRS = (
-    os.path.join(PROJECT_ROOT, 'templates'),
+    os.path.join(PROJECT_ROOT, 'templates/'),
+    os.path.join(PROJECT_ROOT, 'templates/admin/'),
 )
 
 STATICFILES_DIRS = (
-    os.path.join(PROJECT_ROOT, 'static'),
+    os.path.join(PROJECT_ROOT, 'static/'),
 )
 
 INSTALLED_APPS = (
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.staticfiles',
-    'biz',
-    # Uncomment the next line to enable the admin:
-    'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     #'django.contrib.admindocs',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.messages',
+    'django.contrib.sessions',
+    'django.contrib.admin',
+    # everything above needed for admin
+    'django.contrib.localflavor',
+    'django.contrib.staticfiles',
+    'biz',
+#    'south',
 )
 
 try:
