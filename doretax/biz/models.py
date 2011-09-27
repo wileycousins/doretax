@@ -8,12 +8,12 @@ class Association(models.Model):
     e.g. Chamber of Commerce, National Society of Pencil Sharpeners, etc. 
     """
     ASSOCIATION_TYPES = (
-                         (0, 'Civic and Community'),
-                         (1, 'Professional'), 
+                         ('civic', 'Civic and Community'),
+                         ('prof', 'Professional'), 
                          )
     name = models.CharField(max_length=100, unique=True)
-    type = models.SmallIntegerField("Community or professional?", choices=ASSOCIATION_TYPES)
-    link = models.URLField("Association link", null=True, blank=True, help_text="(optional)")
+    type = models.CharField(max_length=5, choices=ASSOCIATION_TYPES)
+    link = models.URLField(null=True, blank=True, help_text="(optional)")
     
     def __unicode__(self):
         return self.name
@@ -60,12 +60,12 @@ class Link(models.Model):
     e.g. Where's my refund?, Movies made locally, etc.
     """
     LINK_TYPES = (
-                  (0, 'Client'),
-                  (1, 'Community'), 
+                  ('client', 'Client'),
+                  ('community', 'Community'), 
                   )
     name = models.CharField(max_length=100, unique=True)
     link = models.URLField()
-    kind = models.SmallIntegerField(choices=LINK_TYPES)
+    kind = models.CharField(max_length=9, choices=LINK_TYPES)
     description = models.TextField(blank=True, null=True, help_text="(optional)")
     
     def __unicode__(self):
