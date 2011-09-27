@@ -6,7 +6,7 @@ jQuery.event.add(window, 'unload', leave);
 var loc;
 var isMobile = false;
 var isIE = false;
-var fadeDelay = 1500;
+var fadeDelay = 600;
 var changing = false;
 
 //Checking for mobile browser
@@ -24,7 +24,7 @@ if (jQuery.browser.msie) {
 function animateOut(){
     $('#main').css('overflow', 'hidden');
     $('.center').stop().animate({
-        left: 3000
+        opacity: 0
     }, fadeDelay);
 }
 
@@ -56,9 +56,8 @@ function animateIn(loc){
             }
         }
         $('.center').html(html);
-        $('.center').css('left', -2000);
         $('.center').stop().animate({
-            left: 0
+            opacity: 1
         }, fadeDelay);
         window.setTimeout("$('#main').css('overflow','visible');", fadeDelay);
         init();
