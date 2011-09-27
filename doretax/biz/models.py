@@ -5,7 +5,7 @@ from django.contrib.localflavor.us.us_states import STATE_CHOICES
 class Association(models.Model):
     """
     A civic or professional association.
-     e.g. Chamber of Commerce, National Society of Pencil Sharpeners, etc. 
+    e.g. Chamber of Commerce, National Society of Pencil Sharpeners, etc. 
     """
     ASSOCIATION_TYPES = (
                          (0, 'Civic and Community'),
