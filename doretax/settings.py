@@ -79,8 +79,7 @@ STATICFILES_DIRS = (
 )
 
 INSTALLED_APPS = (
-    # Uncomment the next line to enable admin documentation:
-    #'django.contrib.admindocs',
+    'django.contrib.admindocs',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.messages',

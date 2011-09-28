@@ -13,4 +13,5 @@ gallery/*
 *.swp
 *.db
 *.sqlite
+*.tmp
 local_settings.py

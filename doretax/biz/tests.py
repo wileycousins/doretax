@@ -1,23 +1,16 @@
 """
-This file demonstrates two different styles of tests (one doctest and one
-unittest). These will both pass when you run "manage.py test".
-
-Replace these with more appropriate tests for your application.
+Tests for the biz app.
 """
 
-from django.test import TestCase
+from django.utils import unittest
+from biz.models import Association, AssocPosition
 
-class SimpleTest(TestCase):
-    def test_basic_addition(self):
-        """
-        Tests that 1 + 1 always equals 2.
-        """
-        self.failUnlessEqual(1 + 1, 2)
+class AssociationTestCase(unittest.TestCase):
+    def setUp(self):
+        self.pencilSharperner = Association.objects.create(name="Nation Society of Pencil Sharpeners", type="civic")
+        self.chamberOfCommerce = Association.objects.create(name="Chamber of Commerce", type="prof")
+        self.chamberOfCommerce = Association.objects.create(name="Professional Tax People", type="prof", link="www.example.org")
 
-__test__ = {"doctest": """
-Another way to test that 1 + 1 is equal to 2.
-
->>> 1 + 1 == 2
-True
-"""}
-
+#    def testRequired(self):
+#        self.assertEqual(self.lion.speak(), 'The lion says "roar"')
+#        self.assertEqual(self.cat.speak(), 'The cat says "meow"')

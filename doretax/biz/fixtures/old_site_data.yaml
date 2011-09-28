@@ -1,0 +1,213 @@
+# associations
+- fields: {link: '', name: Abbeville Cultural & Historical Alliance, type: civic}
+  model: biz.association
+  pk: 10
+- fields: {link: '', name: Abbeville Rotary Club, type: civic}
+  model: biz.association
+  pk: 13
+- fields: {link: '', name: Abbeville-Vermilion Chamber of Commerce, type: civic}
+  model: biz.association
+  pk: 3
+- fields: {link: '', name: Abbey Players Theatre, type: civic}
+  model: biz.association
+  pk: 15
+- fields: {link: '', name: Association of Louisiana Arts & Artist, type: civic}
+  model: biz.association
+  pk: 17
+- fields: {link: '', name: Friends of Godchaux Park, type: civic}
+  model: biz.association
+  pk: 9
+- fields: {link: '', name: Girl Scouts Bayou Council, type: civic}
+  model: biz.association
+  pk: 8
+- fields: {link: '', name: LSU Alumni Fund for Vermilion Parish, type: civic}
+  model: biz.association
+  pk: 22
+- fields: {link: '', name: Performing Arts Society of Acadiana (PASA), type: civic}
+  model: biz.association
+  pk: 7
+- fields: {link: '', name: Public Affairs Research Council, type: civic}
+  model: biz.association
+  pk: 18
+- fields: {link: '', name: Rotary International/District 6200, type: civic}
+  model: biz.association
+  pk: 14
+- fields: {link: '', name: Vermilion Arts Council, type: civic}
+  model: biz.association
+  pk: 11
+- fields: {link: '', name: Vermilion Boy Scouts Committee, type: civic}
+  model: biz.association
+  pk: 20
+- fields: {link: '', name: Vermilion Cancer Society, type: civic}
+  model: biz.association
+  pk: 19
+- fields: {link: '', name: Vermilion Historical Society, type: civic}
+  model: biz.association
+  pk: 12
+- fields: {link: '', name: Vermilion Special Olympics Fund, type: civic}
+  model: biz.association
+  pk: 21
+- fields: {link: '', name: Vermilion/Carmel May Festival, type: civic}
+  model: biz.association
+  pk: 16
+- fields: {link: '', name: Accredited Tax Advisor, type: prof}
+  model: biz.association
+  pk: 2
+- fields: {link: '', name: Accredited Tax Preparer, type: prof}
+  model: biz.association
+  pk: 4
+- fields: {link: '', name: Louisiana Society of Independent Accountants, type: prof}
+  model: biz.association
+  pk: 5
+- fields: {link: '', name: National Society of Enrolled Agents, type: prof}
+  model: biz.association
+  pk: 6
+- fields: {link: '', name: National Society of Public Accountants, type: prof}
+  model: biz.association
+  pk: 1
+# association positions
+- fields: {association: 10, end_year: null, position: Board of Directors, start_year: 2000}
+  model: biz.assocposition
+  pk: 12
+- fields: {association: 10, end_year: 2004, position: Treasurer, start_year: 2000}
+  model: biz.assocposition
+  pk: 13
+- fields: {association: 10, end_year: 2006, position: President, start_year: 2005}
+  model: biz.assocposition
+  pk: 11
+- fields: {association: 13, end_year: null, position: Club Historian, start_year: null}
+  model: biz.assocposition
+  pk: 18
+- fields: {association: 13, end_year: null, position: Member, start_year: 1978}
+  model: biz.assocposition
+  pk: 17
+- fields: {association: 13, end_year: 1987, position: President, start_year: 1986}
+  model: biz.assocposition
+  pk: 21
+- fields: {association: 13, end_year: 2006, position: Foundation Chairman, start_year: 1987}
+  model: biz.assocposition
+  pk: 19
+- fields: {association: 13, end_year: 1988, position: PolioPlus Chairman, start_year: 1987}
+  model: biz.assocposition
+  pk: 20
+- fields: {association: 3, end_year: null, position: Board of Directors, start_year: 1998}
+  model: biz.assocposition
+  pk: 2
+- fields: {association: 3, end_year: 2000, position: Vice President for Finance, start_year: 1999}
+  model: biz.assocposition
+  pk: 3
+- fields: {association: 3, end_year: 2006, position: President, start_year: 2006}
+  model: biz.assocposition
+  pk: 1
+- fields: {association: 15, end_year: 1990, position: Board of Directors, start_year: 1986}
+  model: biz.assocposition
+  pk: 28
+- fields: {association: 15, end_year: 1990, position: Treasurer, start_year: 1986}
+  model: biz.assocposition
+  pk: 29
+- fields: {association: 17, end_year: 1985, position: Board of Directors, start_year: 1980}
+  model: biz.assocposition
+  pk: 31
+- fields: {association: 9, end_year: null, position: Co Chair, start_year: 2000}
+  model: biz.assocposition
+  pk: 10
+- fields: {association: 8, end_year: null, position: Vice President, start_year: null}
+  model: biz.assocposition
+  pk: 8
+- fields: {association: 8, end_year: null, position: Finance Chairman, start_year: null}
+  model: biz.assocposition
+  pk: 9
+- fields: {association: 8, end_year: null, position: Board of Directors, start_year: 2003}
+  model: biz.assocposition
+  pk: 7
+- fields: {association: 22, end_year: 1984, position: Chairman, start_year: 1982}
+  model: biz.assocposition
+  pk: 35
+- fields: {association: 7, end_year: 2006, position: Board of Directors, start_year: 2005}
+  model: biz.assocposition
+  pk: 6
+- fields: {association: 18, end_year: null, position: Lafayette Regional Development
+      Committee, start_year: null}
+  model: biz.assocposition
+  pk: 32
+- fields: {association: 14, end_year: 1990, position: 'Treasurer and Registration
+      Co-Chairman, District Conference', start_year: 1990}
+  model: biz.assocposition
+  pk: 27
+- fields: {association: 14, end_year: 1999, position: District Treasurer, start_year: 1998}
+  model: biz.assocposition
+  pk: 26
+- fields: {association: 14, end_year: 2004, position: Permanent Fund Chair, start_year: 2000}
+  model: biz.assocposition
+  pk: 24
+- fields: {association: 14, end_year: 2004, position: Group Study Exchange Committee,
+    start_year: 2001}
+  model: biz.assocposition
+  pk: 25
+- fields: {association: 14, end_year: 2005, position: Friendship Exchange Chair, start_year: 2004}
+  model: biz.assocposition
+  pk: 23
+- fields: {association: 14, end_year: 2006, position: District Secretary, start_year: 2005}
+  model: biz.assocposition
+  pk: 22
+- fields: {association: 11, end_year: null, position: Charter Member, start_year: 1980}
+  model: biz.assocposition
+  pk: 14
+- fields: {association: 11, end_year: null, position: Board of Directors, start_year: 1980}
+  model: biz.assocposition
+  pk: 15
+- fields: {association: 19, end_year: 1984, position: Board of Directors, start_year: 1979}
+  model: biz.assocposition
+  pk: 33
+- fields: {association: 12, end_year: null, position: Board of Directors, start_year: null}
+  model: biz.assocposition
+  pk: 16
+- fields: {association: 21, end_year: 1984, position: Board of Directors, start_year: 1982}
+  model: biz.assocposition
+  pk: 34
+- fields: {association: 16, end_year: 1990, position: Treasurer, start_year: 1978}
+  model: biz.assocposition
+  pk: 30
+- fields: {association: 5, end_year: null, position: Vice President, start_year: null}
+  model: biz.assocposition
+  pk: 5
+- fields: {association: 5, end_year: 2007, position: Board of Directors, start_year: 2005}
+  model: biz.assocposition
+  pk: 4
+# services
+- fields: {name: Bookkeeping and Write-Up}
+  model: biz.service
+  pk: 4
+- fields: {name: Business Consulting}
+  model: biz.service
+  pk: 12
+- fields: {name: Corporate & Partnership Tax Services}
+  model: biz.service
+  pk: 2
+- fields: {name: Estate & Fiduciary Tax Services}
+  model: biz.service
+  pk: 7
+- fields: {name: Financial Statements}
+  model: biz.service
+  pk: 10
+- fields: {name: IRS Representation}
+  model: biz.service
+  pk: 6
+- fields: {name: Individual Tax Services & E-filing}
+  model: biz.service
+  pk: 1
+- fields: {name: Non-Profit Organization Consulting}
+  model: biz.service
+  pk: 11
+- fields: {name: Payroll Services}
+  model: biz.service
+  pk: 3
+- fields: {name: QuickBooks Consulting}
+  model: biz.service
+  pk: 5
+- fields: {name: Sales Tax Services}
+  model: biz.service
+  pk: 9
+- fields: {name: Tax Planning and Preparation}
+  model: biz.service
+  pk: 8
