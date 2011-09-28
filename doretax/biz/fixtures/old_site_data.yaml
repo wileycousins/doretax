@@ -1,3 +1,4 @@
+# associations
 - fields: {link: '', name: Abbeville Cultural & Historical Alliance, type: civic}
   model: biz.association
   pk: 10
@@ -64,6 +65,7 @@
 - fields: {link: '', name: National Society of Public Accountants, type: prof}
   model: biz.association
   pk: 1
+# association positions
 - fields: {association: 10, end_year: null, position: Board of Directors, start_year: 2000}
   model: biz.assocposition
   pk: 12
@@ -172,3 +174,40 @@
 - fields: {association: 5, end_year: 2007, position: Board of Directors, start_year: 2005}
   model: biz.assocposition
   pk: 4
+# services
+- fields: {name: Bookkeeping and Write-Up}
+  model: biz.service
+  pk: 4
+- fields: {name: Business Consulting}
+  model: biz.service
+  pk: 12
+- fields: {name: Corporate & Partnership Tax Services}
+  model: biz.service
+  pk: 2
+- fields: {name: Estate & Fiduciary Tax Services}
+  model: biz.service
+  pk: 7
+- fields: {name: Financial Statements}
+  model: biz.service
+  pk: 10
+- fields: {name: IRS Representation}
+  model: biz.service
+  pk: 6
+- fields: {name: Individual Tax Services & E-filing}
+  model: biz.service
+  pk: 1
+- fields: {name: Non-Profit Organization Consulting}
+  model: biz.service
+  pk: 11
+- fields: {name: Payroll Services}
+  model: biz.service
+  pk: 3
+- fields: {name: QuickBooks Consulting}
+  model: biz.service
+  pk: 5
+- fields: {name: Sales Tax Services}
+  model: biz.service
+  pk: 9
+- fields: {name: Tax Planning and Preparation}
+  model: biz.service
+  pk: 8
