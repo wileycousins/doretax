@@ -7,6 +7,8 @@
         <link type='text/css' rel='stylesheet' href='{{ STATIC_URL }}css/styles.css'/>
 		<link type='text/css' rel='stylesheet' href='{{ STATIC_URL }}css/ie.css'/>
         <link type='image/x-icon' rel="icon" href='{{ STATIC_URL }}images/fav.ico' />
+		<script type="text/javascript" src="http://use.typekit.com/fgu4koc.js"></script>
+<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
         <title>{% block title %}{% endblock %}Dor&eacute; &amp; Company</title>
         {% include "scripts.html" %}
     </head>
@@ -16,7 +18,8 @@
             <div id='main'>
                 <div id='image-banner'>
                     <img src='{{ STATIC_URL }}images/lloyd.jpg' /><img class='middle' src='{{ STATIC_URL }}images/books.jpg' /><img src='{{ STATIC_URL }}images/sign.jpg' />
-                </div>{% include "nav.html" %}
+                </div>
+				{% include "nav.html" %}
                 <div class='center'>
                     {% block center %}{% endblock %}
                 </div>
