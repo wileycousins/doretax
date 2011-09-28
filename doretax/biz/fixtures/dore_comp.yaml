@@ -1,7 +1,7 @@
 - model: biz.businessdetail
   pk: 1
   fields: 
-    address: 404 Pere Megret Street
+    address: "404 Pere Megret Street"
     cell: 337-652-5470
     city: Abbeville
     email: L3dore@doretax.com
