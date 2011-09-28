@@ -88,7 +88,7 @@ class BusinessDetail(models.Model):
     address = models.CharField(max_length=100)
     city = models.CharField(max_length=100)
     state = USStateField(choices=STATE_CHOICES)
-    postal_code = models.SmallIntegerField(blank=True, null=True, help_text="(optional)")
+    postal_code = models.IntegerField(blank=True, null=True, help_text="(optional)")
     
     def __unicode__(self):
         return self.name
