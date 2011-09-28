@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.localflavor.us.models import USStateField, PhoneNumberField, USPostalCodeField
 from django.contrib.localflavor.us.us_states import STATE_CHOICES
+from django.contrib.auth.models import User
 
 class Association(models.Model):
     """
@@ -69,43 +70,25 @@ class Link(models.Model):
     description = models.TextField(blank=True, null=True, help_text="(optional)")
     
     def __unicode__(self):
-        return "%s, %s" % (self.name, self.link)
+        return self.link
     
     class Meta:
         ordering = ['kind', 'name']
 
-class USMailingAddress(models.Model):
+class BusinessDetail(models.Model):
     """
-    A basic US mailing address.
+    A basic sole proprietor business detail.
     """
-    address1 = models.CharField(max_length=100)
-    address2 = models.CharField(max_length=100, blank=True, null=True, help_text="(optional)")
-    city = models.CharField(max_length=100)
-    state = USStateField(choices=STATE_CHOICES)
-    postal_code = models.SmallIntegerField()
-    
-    def __unicode__(self):
-        return self.address1
-    
-    class Meta:
-        ordering = ['city', 'state']
-        verbose_name = "US Mailing Address"
-        verbose_name_plural = "US Mailing Addresses"
-        
-class ContactInfo(models.Model):
-    """
-    Some basic contact info. Everything is optional.
-    """
+    name = models.CharField(max_length=100, unique=True)
+    owner = models.ForeignKey(User, blank=True, null=True)
     email = models.EmailField(blank=True, null=True, help_text="(optional)")
-    telephone = PhoneNumberField(blank=True, null=True, help_text="(optional)")
     fax = PhoneNumberField(blank=True, null=True, help_text="(optional)")
     cell = PhoneNumberField(blank=True, null=True, help_text="(optional)")
-    address = models.ForeignKey(USMailingAddress, blank=True, null=True, help_text="(optional)")
+    telephone = PhoneNumberField()
+    address = models.CharField(max_length=100)
+    city = models.CharField(max_length=100)
+    state = USStateField(choices=STATE_CHOICES)
+    postal_code = models.SmallIntegerField(blank=True, null=True, help_text="(optional)")
     
     def __unicode__(self):
-        return self.email
-    
-    class Meta:
-        verbose_name = "Contact Information"
-        verbose_name_plural = "Contact Informations"
-    
+        return self.name
