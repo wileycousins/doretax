@@ -1,38 +1,25 @@
-# - model: auth.user
-  # pk: 1
-  # fields:
-    # email: dev@decode72.com
-    # first_name: ''
-    # groups: []
-    # is_active: true
-    # is_staff: true
-    # is_superuser: true
-    # last_name: ''
-    # password: sha1$0e6a4$158b00e7033413aeb78ad31180e13580b873c5f4
-    # user_permissions: []
-    # username: Decode72
-# - model: auth.user
-  # pk: 2
-  # fields:
-    # first_name: Lloyd F.
-    # groups: []
-    # is_active: true
-    # is_staff: true
-    # is_superuser: false
-    # last_name: Dore' III
-    # password: sha1$a38e9$513be2001c94e8aa6642a433dab78c45948e464f
-    # user_permissions: [22, 23, 24, 25, 26, 27, 35, 31, 32, 33, 28, 29, 30]
-    # username: Lloyd
-# - model: biz.businessdetail
-  # pk: 1
-  # fields: 
-    # address: 404 Pere Megret Street
-    # cell: 337-652-5470
-    # city: Abbeville
-    # email: L3dore@doretax.com
-    # fax: 337-893-5400
-    # name: Dore' & Company
-    # owner: 2
-    # postal_code: 70510
-    # state: LA
-    # telephone: 337-893-5400
+- model: auth.user
+  pk: 1
+  fields:
+    email: dev@decode72.com
+    first_name: ''
+    groups: []
+    is_active: true
+    is_staff: true
+    is_superuser: true
+    last_name: ''
+    password: sha1$0e6a4$158b00e7033413aeb78ad31180e13580b873c5f4
+    user_permissions: []
+    username: Decode72
+- model: auth.user
+  pk: 2
+  fields:
+    first_name: Lloyd F.
+    groups: []
+    is_active: true
+    is_staff: true
+    is_superuser: false
+    last_name: Dore' III
+    password: sha1$a38e9$513be2001c94e8aa6642a433dab78c45948e464f
+    user_permissions: [22, 23, 24, 25, 26, 27, 35, 31, 32, 33, 28, 29, 30]
+    username: Lloyd
