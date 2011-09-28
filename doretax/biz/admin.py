@@ -24,10 +24,11 @@ class LinkAdmin(admin.ModelAdmin):
 
 class BusinessDetailAdmin(admin.ModelAdmin):
     list_display = ['name']
-    readonly_fields = ('name', 'owner')
+    exclude = ['owner']
+    readonly_fields = ['name']
     fieldsets = (
         (None, {
-            'fields': ('name', 'owner', 'email', 'telephone', 'fax', 'cell')
+            'fields': ('name', 'telephone', 'fax', 'cell', 'email')
         }),
         ('Address', {
             'fields': ('address', 'city', 'state', 'postal_code')
