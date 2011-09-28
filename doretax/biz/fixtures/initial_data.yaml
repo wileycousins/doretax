@@ -1,14 +1,12 @@
 - model: auth.user
   pk: 1
   fields:
-    date_joined: 2011-09-27 21:48:50.480776
     email: dev@decode72.com
     first_name: ''
     groups: []
     is_active: true
     is_staff: true
     is_superuser: true
-    last_login: 2011-09-27 21:49:43.860909
     last_name: ''
     password: sha1$0e6a4$158b00e7033413aeb78ad31180e13580b873c5f4
     user_permissions: []
