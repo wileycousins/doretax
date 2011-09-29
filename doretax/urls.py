@@ -14,10 +14,15 @@ urlpatterns = patterns('',
 )
 
 # public pages w/ajax support
-urlpatterns += patterns('',    
+urlpatterns += patterns('',
     (r'^(?P<ajax>(%s)?)$' % ajax, 'views.home'),
     (r'^(?P<ajax>(%s)?)about$' % ajax, 'views.about'),
     (r'^(?P<ajax>(%s)?)client-center$' % ajax, 'views.client_center'),
     (r'^(?P<ajax>(%s)?)community$' % ajax, 'views.community'),
     (r'^(?P<ajax>(%s)?)contact$' % ajax, 'views.contact'),
+)
+
+# oh why oh why isn't there a REMOVE_SLASH option...
+urlpatterns += patterns('',
+    (r'^(?P<url>.*)$', 'views.remove_slash'),
 )

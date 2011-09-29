@@ -1,7 +1,8 @@
 from datetime import datetime
 from django.core.context_processors import csrf
 from django.http import Http404
-from django.shortcuts import render_to_response, redirect
+from django.shortcuts import render_to_response, Http404
+from django.views.generic.simple import redirect_to
 from doretax import settings
 from doretax.biz.models import BusinessDetail, Association, Service
 
@@ -52,3 +53,9 @@ def contact(request, ajax):
     if ajax:
         args['base_template'] = "base-ajax.html"
     return render_to_response('contact.html', args)
+
+def remove_slash(request, url):
+    if url.endswith('/'):
+        return redirect_to(request, '/' + url.rstrip('/'))
+    else:
+        raise Http404
