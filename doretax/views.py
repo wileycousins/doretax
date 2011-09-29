@@ -4,6 +4,7 @@ from django.shortcuts import render_to_response, redirect
 from doretax import settings
 from doretax.biz.models import BusinessDetail
 
+# load the basic contact info for Dore' & Company
 contact = BusinessDetail.objects.get(name="Dore' & Company") 
 if not contact:
     contact = BusinessDetail.objects.all()[0]

@@ -13,7 +13,7 @@ urlpatterns = patterns('',
     (r'^sitemap.txt$', direct_to_template, {'template':'sitemap.txt', 'mimetype':'text/plain'}),
 )
 
-# public pages w/ajax support, we should move /get/ to /ajax/
+# public pages w/ajax support
 urlpatterns += patterns('',    
     (r'^(?P<ajax>(%s)?)$' % ajax, 'views.home'),
     (r'^(?P<ajax>(%s)?)about$' % ajax, 'views.about'),
