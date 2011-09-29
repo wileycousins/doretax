@@ -5,6 +5,8 @@ import sys
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
+
+
 # root directories
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media/')
@@ -12,6 +14,8 @@ STATIC_ROOT = os.path.join(PROJECT_ROOT, 'collected-static/')
 # urls
 MEDIA_URL = '/site_media/media/'
 STATIC_URL = '/site_media/static/'
+AJAX_URL = '/get/'
+AJAX_VIEW_PREFIX = AJAX_URL[1:]
 
 ADMIN_MEDIA_PREFIX = os.path.join(STATIC_URL, 'admin/')
 sys.path.append(PROJECT_ROOT)

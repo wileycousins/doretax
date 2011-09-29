@@ -2,43 +2,47 @@ from django.core.context_processors import csrf
 from django.http import Http404
 from django.shortcuts import render_to_response, redirect
 from doretax import settings
- 
-all_pages = ('about.html', 'contact.html', 'home.html', 'client-center.html', 'community.html')
- 
-def default(request, page):
-    args = {
-            'STATIC_URL' : settings.STATIC_URL,
-            'base_template' : "base.html",
-            }
-    args.update(csrf(request))
-    if page.endswith('/'):
-        return check_without_slash(request, page)
-    if page == '':
-        page = 'home'
-    page = "%s.html" % page
-    if page in all_pages:
-        return render_to_response('%s' % page, args)
-    else:
-        raise Http404
+from doretax.biz.models import BusinessDetail
 
-def get(request, page):
-    if not request.is_ajax():
-        raise Http404
-    args = {
-            'STATIC_URL' : settings.STATIC_URL,
-            'base_template' : "base-ajax.html",
-            }
-    args.update(csrf(request))
-    if page.endswith('/'):
-        page = page[:-1]
-    if page == '':
-        page = 'home'
-    page = "%s.html" % page
-    if page in all_pages:
-        return render_to_response('%s' % page, args)
-    else:
-        raise Http404
+contact = BusinessDetail.objects.get(name="Dore' & Company") 
+if not contact:
+    contact = BusinessDetail.objects.all()[0]
+
+common_args = {
+               'STATIC_URL' : settings.STATIC_URL,
+               'contact' : contact,
+               'base_template' : 'base.html',
+               } 
+ 
+def home(request, ajax):
+    args = common_args.copy()    
+    if ajax:
+        args['base_template'] = "base-ajax.html"
+    return render_to_response('home.html', args)
     
-def check_without_slash(request, page):
-    return redirect('views.default', page=page.rstrip('/'))
+def about(request, ajax):
+    args = common_args.copy()    
+    args['base_template'] = "base.html"
+    if ajax:
+        args['base_template'] = "base-ajax.html"
+        
+    return render_to_response('about.html', args)
     
+def client_center(request, ajax):    
+    args = common_args.copy()    
+    if ajax:
+        args['base_template'] = "base-ajax.html"
+    return render_to_response('client-center.html', args)
+    
+def community(request, ajax):
+    args = common_args.copy()    
+    if ajax:
+        args['base_template'] = "base-ajax.html"
+    return render_to_response('community.html', args)
+    
+def contact(request, ajax):
+    args = common_args.copy()   
+    print 'shals' 
+    if ajax:
+        args['base_template'] = "base-ajax.html"
+    return render_to_response('contact.html', args)
