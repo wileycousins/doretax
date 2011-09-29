@@ -5,6 +5,35 @@ from django.utils.safestring import mark_safe
 
 register = template.Library()
 
+def isEmail(email):
+    from django.core.validators import validate_email
+    from django.core.exceptions import ValidationError
+    try:
+        validate_email(email)
+        return True
+    except ValidationError:
+        return False
+
+@register.filter
+@stringfilter
+def emailuser_span(value, class_name, autoescape=None):
+    """
+    Tries to span the username of an email address with the provided class_name.
+    e.g. foo@bar.com becomes <span class='class_name'>foo</span>@bar.com 
+    """
+    if autoescape:
+        esc = conditional_escape
+    else:
+        esc = lambda x: x
+        
+    if isEmail(value):
+        parts = value.split('@')
+        newvalue = "<span class='%s'>%s</span>%s%s" % (class_name, esc(parts[0]), esc('@'), esc(parts[1]))
+        return mark_safe(newvalue)
+    else:
+        return mark_safe(value)
+emailuser_span.needs_autoescape = True 
+
 @register.filter
 @stringfilter
 def phone_paren(value, delimiter):
@@ -68,7 +97,7 @@ def pretty_numbers(value, class_name="number", autoescape=None):
     else:
         esc = lambda x: x
     
-    spanbegin = "<span class='%s'>" % class_name
+    spanbegin = "<span class='%s'>" % esc(class_name)
     spanend = "</span>"
     spanning = False
     newvalue = ''

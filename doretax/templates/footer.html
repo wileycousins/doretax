@@ -11,7 +11,7 @@
 		<a class='bottom-link' href='/contact'><h3>contact</h3></a>
 	</div>
 	<div>
-		<h3>email: <a class='no-link'href='mailto://{{ contact.email }}'><span class='all-caps'>l3dore</span>@doretax.com</a>
+		<h3>email: <a class='no-link'href='mailto://{{ contact.email }}'>{{ contact.email|emailuser_span:"all-caps" }}</a>
 		<br/>
 		tel & fax: <a class='no-link'href='tel://{{ contact.telephone|phone:""}}'><span class='number'>{{ contact.telephone|phone_paren:" "}}</span></a>
 		<br/>
