@@ -216,7 +216,8 @@ div.right{
 	background-color: #F3F2F2;
 	padding-top: 25px;
 	width: 220px;
-	min-height: 1000px;
+	min-height: 1030px;
+	height: auto;
 	float: right;
 }
 
@@ -236,24 +237,33 @@ div.right p {
 
 #footer{
 	position: relative;
+	margin: 0;
 	margin-top: 5px;
+	padding: 0;
 	height: 100px;
-	padding-left: 220px;
+	width: 100%;
 	border-top: 4px solid #221F72;
 	z-index: 2;
 }
 
 #footer > div{
+	display: inline-block;
 	position: relative;
+	left: 220px;
 	float: left;
-	width: 180px;
+	width: auto;
 	padding: 10px;
-	margin-right: 10px;
+	margin-right: 45px;
 	font-family: "adobe garamond pro", serif;
 	font-weight: 700;
 }
+
+#footer > div:last-child{
+	margin-right: 0px;
+	padding-right: 0px;
+}
 #footer > div.small{
-	width: 100px;
+	width: auto;
 	font-family: "adobe garamond pro", serif;
 	font-weight: 700;
 }
