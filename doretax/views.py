@@ -1,3 +1,4 @@
+from datetime import datetime
 from django.core.context_processors import csrf
 from django.http import Http404
 from django.shortcuts import render_to_response, redirect
@@ -17,33 +18,37 @@ common_args = {
  
 def home(request, ajax):
     args = common_args.copy()    
+    args['year'] = datetime.now().year
+    args['assocs'] = Association.objects.professional()
     if ajax:
         args['base_template'] = "base-ajax.html"
-    args['assocs'] = Association.objects.professional()
     return render_to_response('home.html', args)
     
 def about(request, ajax):
     args = common_args.copy()    
+    args['year'] = datetime.now().year
+    args['services'] = Service.objects.all()
     if ajax:
         args['base_template'] = "base-ajax.html"
-    args['services'] = Service.objects.all()
     return render_to_response('about.html', args)
     
 def client_center(request, ajax):    
     args = common_args.copy()    
+    args['year'] = datetime.now().year
     if ajax:
         args['base_template'] = "base-ajax.html"
     return render_to_response('client-center.html', args)
     
 def community(request, ajax):
     args = common_args.copy()    
+    args['year'] = datetime.now().year
     if ajax:
         args['base_template'] = "base-ajax.html"
     return render_to_response('community.html', args)
     
 def contact(request, ajax):
     args = common_args.copy()   
-    print 'shals' 
+    args['year'] = datetime.now().year
     if ajax:
         args['base_template'] = "base-ajax.html"
     return render_to_response('contact.html', args)
