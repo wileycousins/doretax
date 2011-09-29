@@ -3,7 +3,9 @@ html, body {
 	padding: 0;
 	font-family: "adobe garamond pro", serif;
 }
-
+body {
+	background-image: url(../images/bg.jpg); background-repeat: repeat;
+}
 .gradient-body {
     /*Gradient code*/
     /* For WebKit (Safari, Google Chrome etc) */
