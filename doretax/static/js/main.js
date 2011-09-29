@@ -36,14 +36,14 @@ function leave(event){
 }
 
 function animateIn(loc){
-	$('.current-page').removeClass('current-page');
-	if(loc == '/'){
+    $('.current-page').removeClass('current-page');
+    if (loc == '/') {
         var id = '#home';
     }
-    else{
-		var id = '#'+loc.replace('/','');
+    else {
+        var id = '#' + loc.replace('/', '');
     }
-	$(id).children().addClass('current-page');
+    $(id).children().addClass('current-page');
     $.get('/get' + loc, function(data){
         var title = $($(data)[0]).text();
         $('title').text(title);
@@ -84,25 +84,39 @@ function watchURLChange(){
 }
 
 function resize(){
-	var diff = 10;
-	if($('.right').height() + diff > $('#main').height()){
-	   if(isIE)
-		  $('#main').height($('.right').height() + diff + 25);
-	   else
-	      $('#main').height($('.right').height() + diff);
-	}
+    var diff = 10;
+    if ($('.right').height() + diff > $('#main').height()) {
+        if (isIE) 
+            $('#main').height($('.right').height() + diff + 25);
+        else 
+            $('#main').height($('.right').height() + diff);
+    }
     $('#nav').height($('div.right').height() - 290);
+}
+
+function smoothScroll(){
+	var pos = $(document).scrollTop();
+	var delta = 100;
+    if (pos > 179) {
+        window.setTimeout(function(){
+			if (pos - delta < 179){
+				delta = pos - 179;
+			}
+			$(document).scrollTop(pos - delta);
+			window.setTimeout("smoothScroll();", 10);
+		}, 20);
+    }
 }
 
 function init(){
     resize();
     if (isIE) {
-		if(!navigator.userAgent.match('MSIE 9.0')){
-			$('#image-banner').width(1000);
-		}
-//		if (jQuery.browser.msie.version) {
+        if (!navigator.userAgent.match('MSIE 9.0')) {
+            $('#image-banner').width(1000);
+        }
+        //		if (jQuery.browser.msie.version) {
         $('.gradient-gray').removeClass('gradient-gray');
-		$('#footer').removeClass('gradient-gray');
+        $('#footer').removeClass('gradient-gray');
         $('.gradient-body').removeClass('gradient-body');
         $('body').add('div').addClass('ie');
     }
@@ -110,13 +124,13 @@ function init(){
     loc = window.location + "";
     loc = loc.split('/');
     loc = loc[loc.length - 1];
-	if(loc == ''){
-		var id = '#home';
-	}
-	else{
-		var id = '#'+loc;
-	}
-	$(id).children().addClass('current-page');
+    if (loc == '') {
+        var id = '#home';
+    }
+    else {
+        var id = '#' + loc;
+    }
+    $(id).children().addClass('current-page');
     $('a:not(.no-link)').unbind('click');
     $('a:not(.no-link)').bind('click', function(event){
         changing = true;
@@ -129,13 +143,16 @@ function init(){
         if (Modernizr.history) {
             var stateObject = nextPage;
             window.history.pushState(stateObject, "Dor&eacute; Tax", nextPage);
+            if ($(this).attr('class') == 'bottom-link') {
+                smoothScroll();
+            }
         }
         else {
             window.location.href = nextPage;
         }
         window.setTimeout(function(){
             animateIn(nextPage);
-        }, fadeDelay/1.5);
+        }, fadeDelay / 1.5);
     });
     watchURLChange();
 }
