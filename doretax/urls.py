@@ -24,5 +24,6 @@ urlpatterns += patterns('',
 
 # oh why oh why isn't there a REMOVE_SLASH option...
 urlpatterns += patterns('',
+    (r'^admin$', 'views.admin_add_slash'),
     (r'^(?P<url>.*)$', 'views.remove_slash'),
 )

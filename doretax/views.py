@@ -59,3 +59,6 @@ def remove_slash(request, url):
         return redirect_to(request, '/' + url.rstrip('/'))
     else:
         raise Http404
+    
+def admin_add_slash(request):
+    return redirect_to(request, request.path + '/')    
