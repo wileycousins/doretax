@@ -1,3 +1,4 @@
+{% load biz_extras %}
 <div id='footer' class='gradient-gray'>
 	<div>
 		<h3><a href='/'>dor&eacute; &amp; company <span class='number'>2011<br/></span></a><a href='/privacy'>privacy</a><br/><a href='/terms'>terms and conditions</a></h3>
@@ -10,15 +11,15 @@
 		<a class='bottom-link' href='/contact'><h3>contact</h3></a>
 	</div>
 	<div>
-		<h3>email: <a class='no-link'href='mailto://l3dore@doretax.com'><span class='all-caps'>l3dore</span>@doretax.com</a>
+		<h3>email: <a class='no-link'href='mailto://{{ contact.email }}'><span class='all-caps'>l3dore</span>@doretax.com</a>
 		<br/>
-		tel & fax: <a class='no-link'href='tel://3378935400'><span class='number'>(337) 893 5400</span></a>
+		tel & fax: <a class='no-link'href='tel://{{ contact.telephone|phone:""}}'><span class='number'>{{ contact.telephone|phone_paren:" "}}</span></a>
 		<br/>
-		cell: <a class='no-link'href='tel://3378935400'><span class='number'>(337) 652 5470</span></a></h3>
+		cell: <a class='no-link'href='tel://{{ contact.cell|phone:""}}'><span class='number'>{{ contact.cell|phone_paren:" "}}</span></a></h3>
 	</div>
 	<div>
-		<h3><span class='number'>404</span> pere megret street<br/>
-		p.o. box <span class='number'>935</span><br/>
-		abbeville, louisiana <span class='number'>70511</span></h3>
+		<h3>{{ contact.address1|pretty_numbers }}<br/>
+		{{ contact.address2|pretty_numbers }}<br/>
+		{{ contact.city }}, {{ contact.state }} {{ contact.postal_code|pretty_numbers }}</h3>
 	</div>
 </div>
