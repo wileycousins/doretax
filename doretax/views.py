@@ -2,7 +2,7 @@ from django.core.context_processors import csrf
 from django.http import Http404
 from django.shortcuts import render_to_response, redirect
 from doretax import settings
-from doretax.biz.models import BusinessDetail
+from doretax.biz.models import BusinessDetail, Association, Service
 
 # load the basic contact info for Dore' & Company
 contact = BusinessDetail.objects.get(name="Dore' & Company") 
@@ -19,14 +19,14 @@ def home(request, ajax):
     args = common_args.copy()    
     if ajax:
         args['base_template'] = "base-ajax.html"
+    args['assocs'] = Association.objects.professional()
     return render_to_response('home.html', args)
     
 def about(request, ajax):
     args = common_args.copy()    
-    args['base_template'] = "base.html"
     if ajax:
         args['base_template'] = "base-ajax.html"
-        
+    args['services'] = Service.objects.all()
     return render_to_response('about.html', args)
     
 def client_center(request, ajax):    
