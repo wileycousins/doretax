@@ -81,7 +81,7 @@ class Link(models.Model):
                   )
     name = models.CharField(max_length=100, unique=True)
     link = models.URLField()
-    kind = models.CharField(max_length=9, choices=LINK_TYPES)
+    type = models.CharField(max_length=9, choices=LINK_TYPES)
     description = models.TextField(blank=True, null=True, help_text="(optional)")
     objects = LinkManager()
     
@@ -89,7 +89,7 @@ class Link(models.Model):
         return self.link
     
     class Meta:
-        ordering = ['kind', 'name']
+        ordering = ['type', 'name']
 
 class BusinessDetail(models.Model):
     """
@@ -101,7 +101,8 @@ class BusinessDetail(models.Model):
     fax = PhoneNumberField(blank=True, null=True, help_text="(optional)")
     cell = PhoneNumberField(blank=True, null=True, help_text="(optional)")
     telephone = PhoneNumberField()
-    address = models.CharField(max_length=100)
+    address1 = models.CharField(max_length=100)
+    address2 = models.CharField(max_length=100)
     city = models.CharField(max_length=100)
     state = USStateField(choices=STATE_CHOICES)
     postal_code = models.IntegerField(blank=True, null=True, help_text="(optional)")

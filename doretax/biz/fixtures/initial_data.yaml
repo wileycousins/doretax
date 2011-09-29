@@ -26,13 +26,14 @@
 - model: biz.businessdetail
   pk: 1
   fields: 
-    address: 404 Pere Megret Street
+    address1: 404 Pere Megret Street
+    address2: P.O. Box 935
     cell: 337-652-5470
     city: Abbeville
     email: L3dore@doretax.com
     fax: 337-893-5400
     name: Dore' & Company
     owner: 2
-    postal_code: 70510
+    postal_code: 70511
     state: LA
     telephone: 337-893-5400    
