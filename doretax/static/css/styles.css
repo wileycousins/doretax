@@ -94,6 +94,9 @@ font-family: "adobe garamond pro", serif;
 #contact-bar a {
 	font-family: "adobe garamond pro", serif;
 }
+#contact-bar a:hover {
+	color: #555;
+}
 #main{
 	position: relative;
 	top: 5px;
@@ -144,13 +147,14 @@ font-family: "adobe garamond pro", serif;
 	padding-top: 30px;
 }
 #nav *{
-	line-height: 1.5em;
-	font-variant: small-caps;
+	font-size: .9em;
+	line-height: 2em;
+	font-weight: 900;
 	font-family: "adobe garamond pro", serif;
 }
 #nav *:hover{
     cursor: pointer;
-    color: #676767;
+    color: #BBB;
 }
 
 #main > div.center{
@@ -196,6 +200,16 @@ div.copy p{
 	font-family: "adobe garamond pro", serif;
 }
 
+#pro li, div.copy li {
+	font-family: "adobe garamond pro", serif;
+	line-height: 2em;
+	margin-left: 20px;
+}
+#pro h2.all-caps {
+	font-family: "adobe garamond pro", serif;
+	margin-bottom: 5px;	
+}
+
 div.right{
 	position: relative;
 	top: 0px;
@@ -208,6 +222,7 @@ div.right{
 
 div.right h2{
 	padding: 8px 0px 0px 8px;
+	margin-left: 5px;
 	font-family: "adobe garamond pro", serif;
 }
 
@@ -251,7 +266,7 @@ div.right p {
 	font-family: "adobe garamond pro", serif;
 }
 .current-page{
-	color: #676767;
+	color: #777;
 }
 .all-caps{
 	font-variant: small-caps;
