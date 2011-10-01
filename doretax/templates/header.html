@@ -1,3 +1,4 @@
+{% load biz_extras %}
 <div id='header'>
 	<div id='stripe'></div>
 	<div id='logo'>
@@ -12,9 +13,9 @@
 <div id='contact-bar' class='gradient-gray'>
 	<div>
 		<h5>
-			<span class='all-caps'>email: </span><a class='no-link'href='mailto://l3dore@doretax.com'><span class='number'>L3Dore</span>@doretax.com</a> &nbsp;&nbsp;|&nbsp;&nbsp;
-			<span class='all-caps'>tel &amp; fax: </span><a class='no-link'href='tel://3378935400'><span class='number'>(337) 893 5400</span></a> &nbsp;&nbsp;|&nbsp;&nbsp;
-			<span class='all-caps'>cell: </span><a class='no-link'href='tel://3378935400'><span class='number'>(337) 652 5470</span></a>
+			<span class='all-caps'>email: </span><a class='no-link'href='mailto://{{ contact.email }}'>{{ contact.email|emailuser_span:"number" }}</a> &nbsp;&nbsp;|&nbsp;&nbsp;
+			<span class='all-caps'>tel &amp; fax: </span><a class='no-link'href='tel://{{ contact.telephone|phone:""}}'><span class='number'>{{ contact.telephone|phone_paren:" "}}</span></a> &nbsp;&nbsp;|&nbsp;&nbsp;
+			<span class='all-caps'>cell: </span><a class='no-link'href='tel://{{ contact.cell|phone:""}}'><span class='number'>{{ contact.cell|phone_paren:" "}}</span></a>
 		</h5>
 	</div>
 </div>

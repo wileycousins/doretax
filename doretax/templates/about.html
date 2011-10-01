@@ -15,41 +15,10 @@
 	<br/>
 	<br>
     <h2 class='all-caps'>dor&eacute; <span class='number'>&amp;</span> company offers theses services to its clients:</h2>
-    <li>
-        Individual Tax Services & E-filing 
-    </li>
-    <li>
-        Estate & Fiduciary Tax Services
-    </li>
-    <li>
-        Corporate & Partnership Tax Services 
-    </li>
-    <li>
-        Tax Planning and Preparation
-    </li>
-    <li>
-        Payroll Services 
-    </li>
-    <li>
-        Sales Tax Services
-    </li>
-    <li>
-        Bookkeeping and Write-Up 
-    </li>
-    <li>
-        Financial Statements
-    </li>
-    <li>
-        QuickBooks Consulting 
-    </li>
-    <li>
-        Non-Profit Organization Consulting
-    </li>
-    <li>
-        IRS Representation 
-    </li>
-    <li>
-        Business Consulting
-    </li>
+        {% for service in services %}
+       <li>
+           {{ service.name }}
+       </li>
+    {% endfor %}
 </div>
 {% endblock %}

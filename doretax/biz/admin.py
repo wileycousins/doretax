@@ -19,7 +19,7 @@ class ServiceAdmin(admin.ModelAdmin):
     search_fields = ['name']
 
 class LinkAdmin(admin.ModelAdmin):
-    list_display = ('name', 'link', 'kind')
+    list_display = ('name', 'link', 'type')
     search_fields = ['name', 'link']
 
 class BusinessDetailAdmin(admin.ModelAdmin):
@@ -31,7 +31,7 @@ class BusinessDetailAdmin(admin.ModelAdmin):
             'fields': ('name', 'telephone', 'fax', 'cell', 'email')
         }),
         ('Address', {
-            'fields': ('address', 'city', 'state', 'postal_code')
+            'fields': ('address1', 'address2', 'city', 'state', 'postal_code')
         }),
     )
     

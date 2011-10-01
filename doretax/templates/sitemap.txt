@@ -1,5 +1,5 @@
-http://www.doretax.com/
-http://www.doretax.com/about/
-http://www.doretax.com/client-center/
-http://www.doretax.com/community/
-http://www.doretax.com/contact/
+http://www.doretax.com
+http://www.doretax.com/about
+http://www.doretax.com/client-center
+http://www.doretax.com/community
+http://www.doretax.com/contact

@@ -3,6 +3,14 @@ from django.contrib.localflavor.us.models import USStateField, PhoneNumberField,
 from django.contrib.localflavor.us.us_states import STATE_CHOICES
 from django.contrib.auth.models import User
 
+
+class AssociationManager(models.Manager):
+    def professional(self):
+        return self.get_query_set().filter(type='prof')
+    
+    def civic(self):
+        return self.get_query_set().filter(type='civic')
+
 class Association(models.Model):
     """
     A civic or professional association.
@@ -15,13 +23,13 @@ class Association(models.Model):
     name = models.CharField(max_length=100, unique=True)
     type = models.CharField(max_length=5, choices=ASSOCIATION_TYPES)
     link = models.URLField(null=True, blank=True, help_text="(optional)")
+    objects = AssociationManager()
     
     def __unicode__(self):
         return self.name
     
     class Meta:
-        ordering = ['type', 'name']
-
+        ordering = ['type', 'name']    
     
 class AssocPosition(models.Model):
     """
@@ -54,6 +62,13 @@ class Service(models.Model):
     
     class Meta:
         ordering = ['name']
+
+class LinkManager(models.Manager):
+    def client(self):
+        return self.get_query_set().filter(kind='client')
+    
+    def community(self):
+        return self.get_query_set().filter(kind='community')
     
 class Link(models.Model):
     """
@@ -66,14 +81,15 @@ class Link(models.Model):
                   )
     name = models.CharField(max_length=100, unique=True)
     link = models.URLField()
-    kind = models.CharField(max_length=9, choices=LINK_TYPES)
+    type = models.CharField(max_length=9, choices=LINK_TYPES)
     description = models.TextField(blank=True, null=True, help_text="(optional)")
+    objects = LinkManager()
     
     def __unicode__(self):
         return self.link
     
     class Meta:
-        ordering = ['kind', 'name']
+        ordering = ['type', 'name']
 
 class BusinessDetail(models.Model):
     """
@@ -85,7 +101,8 @@ class BusinessDetail(models.Model):
     fax = PhoneNumberField(blank=True, null=True, help_text="(optional)")
     cell = PhoneNumberField(blank=True, null=True, help_text="(optional)")
     telephone = PhoneNumberField()
-    address = models.CharField(max_length=100)
+    address1 = models.CharField(max_length=100)
+    address2 = models.CharField(max_length=100)
     city = models.CharField(max_length=100)
     state = USStateField(choices=STATE_CHOICES)
     postal_code = models.IntegerField(blank=True, null=True, help_text="(optional)")

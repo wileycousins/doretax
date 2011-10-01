@@ -16,23 +16,10 @@
 </div>
 <div id='pro'>
 	<h2 class='all-caps'>professional associations</h2>
-	<li>
-		National Society of Public Accountants
-	</li>
-	<li>
-		Accredited Tax Advisor
-	</li>
-	<li>
-		Accredited Tax Preparer
-	</li>
-	<li>
-		Louisiana Society of Independent Accountants
-	</li>
-	<li>
-		Board of Directors 2005-2007, Vice President
-	</li>
-	<li>
-		National Society of Enrolled Agents
-	</li>
+	{% for assoc in assocs %}
+	   <li>
+	       {{ assoc.name }}
+	   </li>
+	{% endfor %}
 </div>
 {% endblock %}

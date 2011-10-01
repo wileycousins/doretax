@@ -1,44 +1,64 @@
+from datetime import datetime
 from django.core.context_processors import csrf
 from django.http import Http404
-from django.shortcuts import render_to_response, redirect
+from django.shortcuts import render_to_response, Http404
+from django.views.generic.simple import redirect_to
 from doretax import settings
- 
-all_pages = ('about.html', 'contact.html', 'home.html', 'client-center.html', 'community.html')
- 
-def default(request, page):
-    args = {
-            'STATIC_URL' : settings.STATIC_URL,
-            'base_template' : "base.html",
-            }
-    args.update(csrf(request))
-    if page.endswith('/'):
-        return check_without_slash(request, page)
-    if page == '':
-        page = 'home'
-    page = "%s.html" % page
-    if page in all_pages:
-        return render_to_response('%s' % page, args)
-    else:
-        raise Http404
+from doretax.biz.models import BusinessDetail, Association, Service
 
-def get(request, page):
-    if not request.is_ajax():
-        raise Http404
-    args = {
-            'STATIC_URL' : settings.STATIC_URL,
-            'base_template' : "base-ajax.html",
-            }
-    args.update(csrf(request))
-    if page.endswith('/'):
-        page = page[:-1]
-    if page == '':
-        page = 'home'
-    page = "%s.html" % page
-    if page in all_pages:
-        return render_to_response('%s' % page, args)
+# load the basic contact info for Dore' & Company
+contact = BusinessDetail.objects.get(name="Dore' & Company") 
+if not contact:
+    contact = BusinessDetail.objects.all()[0]
+
+common_args = {
+               'STATIC_URL' : settings.STATIC_URL,
+               'contact' : contact,
+               'base_template' : 'base.html',
+               } 
+ 
+def home(request, ajax):
+    args = common_args.copy()    
+    args['year'] = datetime.now().year
+    args['assocs'] = Association.objects.professional()
+    if ajax:
+        args['base_template'] = "base-ajax.html"
+    return render_to_response('home.html', args)
+    
+def about(request, ajax):
+    args = common_args.copy()    
+    args['year'] = datetime.now().year
+    args['services'] = Service.objects.all()
+    if ajax:
+        args['base_template'] = "base-ajax.html"
+    return render_to_response('about.html', args)
+    
+def client_center(request, ajax):    
+    args = common_args.copy()    
+    args['year'] = datetime.now().year
+    if ajax:
+        args['base_template'] = "base-ajax.html"
+    return render_to_response('client-center.html', args)
+    
+def community(request, ajax):
+    args = common_args.copy()    
+    args['year'] = datetime.now().year
+    if ajax:
+        args['base_template'] = "base-ajax.html"
+    return render_to_response('community.html', args)
+    
+def contact(request, ajax):
+    args = common_args.copy()   
+    args['year'] = datetime.now().year
+    if ajax:
+        args['base_template'] = "base-ajax.html"
+    return render_to_response('contact.html', args)
+
+def remove_slash(request, url):
+    if url.endswith('/'):
+        return redirect_to(request, '/' + url.rstrip('/'))
     else:
         raise Http404
     
-def check_without_slash(request, page):
-    return redirect('views.default', page=page.rstrip('/'))
-    
+def admin_add_slash(request):
+    return redirect_to(request, request.path + '/')    
