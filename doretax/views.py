@@ -52,6 +52,7 @@ def contact(request, ajax):
     args['year'] = datetime.now().year
     if ajax:
         args['base_template'] = "base-ajax.html"
+    args.update(csrf(request))
     return render_to_response('contact.html', args)
 
 def remove_slash(request, url):

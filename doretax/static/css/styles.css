@@ -79,17 +79,20 @@ font-family: "adobe garamond pro", serif;
 }
 #contact-bar{
 	width: 100%;
+	margin: 0;
+	padding: 0;
 	font-family: "adobe garamond pro", serif;
 }
 #contact-bar > div{
-	margin: 0px auto;
+	text-align: center;
+	margin: 0px auto 0px auto;
 	padding-top: 10px;
-	padding-left: 85px;
-	width: 530px;
 	height: 30px;
 	font-family: "adobe garamond pro", serif;
 }
 #contact-bar h5{
+	display: inline;
+	width: auto;
 	color: #221F72;
 	font-size: 15px;
 	font-weight: 500;
@@ -278,6 +281,94 @@ div.right p {
 	font-variant: small-caps;
 	color: #221F72;
 	font-family: "adobe garamond pro", serif;
+}
+
+#name-email-tel, #message, #send {
+    float: left;
+	display: block;
+}
+
+fieldset {
+    width: 500px;
+    padding: 0;
+    margin: 10px 0 0 10px;
+    border: none;
+}
+
+fieldset h5 {
+    font-weight: 600;
+    font-variant: small-caps;
+}
+
+input#name, input#email, input#telephone, textarea#comments {
+    background-color: #FFF;
+    border: 1px solid #EEE;
+    width: 415px;
+    height: 50px;
+    margin: 0 0 10px 0px;
+    text-align: left;
+    font-family: ff-meta-web-pro, sans-serif;
+    vertical-align: middle;
+    font-size: small;
+    font-weight: 100;
+    color: #808083;
+}
+
+textarea#comments {
+	display: block;
+    font-family: ff-meta-web-pro, sans-serif;
+    width: 400px;
+    height: 185px;
+    margin-top: 2px;
+    border: none;
+    background-color: #F2F2F2;
+    padding: 18px 0 0 15px;
+}
+
+#name-email-tel, #message, #send {
+    float: left;
+}
+
+#send {
+    position: relative;
+    width: 65px;
+    height: 65px;
+    margin: 0 0 0 20px;
+}
+
+#send:hover {
+    cursor: pointer;
+}
+
+#send > img {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+.send {
+    vertical-align: middle;
+    text-align: center;
+    font-family: Adelle, sans-serif;
+    font-size: 1.25em;
+    font-weight: 400;
+    font-variant: small-caps;
+    color: #FFF;
+    border: none;
+    height: 65px;
+    width: 65px;
+    padding-top: 18px;
+    margin: 0 auto;
+}
+
+#form-feedback {
+    position: relative;
+	top: 5px;
+    left: 10px;
+}
+
+#form-feedback h2 {
+    color: #221F72;
 }
 .current-page{
 	color: #777;
