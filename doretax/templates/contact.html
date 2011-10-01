@@ -1,18 +1,17 @@
 {% extends base_template %}
-{% load biz_extras %}
+
 {% block title %}Contact | {% endblock %}
 
-{% block center %}<h1>contact</h1>
-<p>
-{% if contact.email %}email: {{ contact.email}}<br />{% endif %}
-telephone and fax: {{ contact.telephone|phone_paren:" " }}<br />
-{% if contact.cell %}cell: {{ contact.cell|phone_paren:" " }}<br />{% endif %}
-<br />
-Address:
-<br />
-{{ contact.address1 }}
-<br />
-{% if contact.address2 %}{{ contact.address2}}<br />{% endif %}
-{{ contact.city }}, {{ contact.state }}{% if contact.postal_code %} {{ contact.postal_code}}{% endif %}
-</p>
+{% block center %}
+<div class='page-heading-text'>
+    <p>
+    	Feel free to contact by:<br/>
+		<span class='all-caps'>email: </span><a class='no-link' href='mailto://l3dore@doretax.com'><span class='number'>L3Dore</span>@doretax.com</a>
+		, phone, or simply through the contact form below.
+    </p>
+    <br/>
+</div>
+<div class='copy'>
+    
+</div>
 {% endblock %}
