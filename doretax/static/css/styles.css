@@ -223,7 +223,6 @@ div.right{
 	background-color: #F3F2F2;
 	padding-top: 25px;
 	width: 220px;
-	min-height: 1030px;
 	height: auto;
 	float: right;
 }
@@ -245,7 +244,7 @@ div.right p {
 #footer{
 	position: relative;
 	margin: 0;
-	margin-top: 5px;
+	margin-top: 45px;
 	padding: 0;
 	height: 100px;
 	width: 100%;

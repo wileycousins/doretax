@@ -135,7 +135,7 @@ function resize(){
         else 
             $('#main').height($('.right').height() + diff);
     }
-    $('#nav').height($('div.right').height() - 290);
+    $('#nav').height($('div.right').height() - 0);
 }
 
 function smoothScroll(){
