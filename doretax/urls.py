@@ -1,6 +1,7 @@
 from django.conf.urls.defaults import *
 from django.contrib import admin 
 from django.views.generic.simple import redirect_to, direct_to_template
+from doretax.settings import DEBUG
 from doretax.settings import AJAX_VIEW_PREFIX as ajax
 admin.autodiscover()
 
@@ -22,8 +23,19 @@ urlpatterns += patterns('',
     (r'^(?P<ajax>(%s)?)contact$' % ajax, 'views.contact'),
 )
 
+urlpatterns += patterns('',
+    (r'^submit-contact-form$', 'views.contact_request'),
+)
+
+if DEBUG:
+    urlpatterns += patterns('',
+        (r'^(?P<ajax>(%s)?)404$' % ajax, 'views.four_oh_four'),
+        (r'^(?P<ajax>(%s)?)500$' % ajax, 'views.five_oh_oh'),
+    )
+
 # oh why oh why isn't there a REMOVE_SLASH option...
 urlpatterns += patterns('',
     (r'^admin$', 'views.admin_add_slash'),
     (r'^(?P<url>.*)$', 'views.remove_slash'),
 )
+
