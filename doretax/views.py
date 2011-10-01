@@ -6,20 +6,22 @@ from django.views.generic.simple import redirect_to
 from doretax import settings
 from doretax.biz.models import BusinessDetail, Association, Service
 
-# load the basic contact info for Dore' & Company
-contact = BusinessDetail.objects.get(name="Dore' & Company") 
-if not contact:
-    contact = BusinessDetail.objects.all()[0]
+def get_contact():
+    "load the basic contact info for Dore' & Company"
+    contact = BusinessDetail.objects.get(name="Dore' & Company") 
+    if not contact:
+        contact = BusinessDetail.objects.all()[0]
+    return contact
 
 common_args = {
                'STATIC_URL' : settings.STATIC_URL,
-               'contact' : contact,
                'base_template' : 'base.html',
                } 
  
 def home(request, ajax):
-    args = common_args.copy()    
+    args = common_args.copy()
     args['year'] = datetime.now().year
+    args['contact'] = get_contact()
     args['assocs'] = Association.objects.professional()
     if ajax:
         args['base_template'] = "base-ajax.html"
@@ -28,6 +30,7 @@ def home(request, ajax):
 def about(request, ajax):
     args = common_args.copy()    
     args['year'] = datetime.now().year
+    args['contact'] = get_contact()
     args['services'] = Service.objects.all()
     if ajax:
         args['base_template'] = "base-ajax.html"
@@ -36,6 +39,7 @@ def about(request, ajax):
 def client_center(request, ajax):    
     args = common_args.copy()    
     args['year'] = datetime.now().year
+    args['contact'] = get_contact()
     if ajax:
         args['base_template'] = "base-ajax.html"
     return render_to_response('client-center.html', args)
@@ -43,12 +47,15 @@ def client_center(request, ajax):
 def community(request, ajax):
     args = common_args.copy()    
     args['year'] = datetime.now().year
+    args['contact'] = get_contact()
+    args['assocs'] = Association.objects.civic()
     if ajax:
         args['base_template'] = "base-ajax.html"
     return render_to_response('community.html', args)
     
 def contact(request, ajax):
     args = common_args.copy()   
+    args['contact'] = get_contact()
     args['year'] = datetime.now().year
     if ajax:
         args['base_template'] = "base-ajax.html"

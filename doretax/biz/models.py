@@ -39,7 +39,7 @@ class AssocPosition(models.Model):
     association = models.ForeignKey(Association)
     position = models.CharField(max_length=100)
     start_year = models.SmallIntegerField("Year you started this position", null=True, blank=True, help_text="(optional)")
-    end_year = models.SmallIntegerField("Year you ended this position", null=True, blank=True, help_text="(optional) if you currently hold this position, leave blank")
+    end_year = models.SmallIntegerField("Year you ended this position (leave empty if you currently hold this position)", null=True, blank=True, help_text="(optional)")
     
     def __unicode__(self):
         return self.position
@@ -102,7 +102,7 @@ class BusinessDetail(models.Model):
     cell = PhoneNumberField(blank=True, null=True, help_text="(optional)")
     telephone = PhoneNumberField()
     address1 = models.CharField(max_length=100)
-    address2 = models.CharField(max_length=100)
+    address2 = models.CharField(max_length=100, blank=True, null=True)
     city = models.CharField(max_length=100)
     state = USStateField(choices=STATE_CHOICES)
     postal_code = models.IntegerField(blank=True, null=True, help_text="(optional)")
