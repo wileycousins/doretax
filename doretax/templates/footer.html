@@ -11,15 +11,15 @@
 		<a class='bottom-link' href='/contact'><h3>contact</h3></a>
 	</div>
 	<div>
-		<h3>email: <a class='no-link'href='mailto://{{ contact.email }}'>{{ contact.email|emailuser_span:"all-caps" }}</a>
+		<h3>{% if contact.email %}email: <a class='no-link' href='mailto://{{ contact.email }}'>{{ contact.email|emailuser_span:"all-caps" }}</a>
+		<br/>{% endif %}
+		tel & fax: <a class='no-link' href='tel://{{ contact.telephone|phone:""}}'><span class='number'>{{ contact.telephone|phone_paren:" "}}</span></a>
 		<br/>
-		tel & fax: <a class='no-link'href='tel://{{ contact.telephone|phone:""}}'><span class='number'>{{ contact.telephone|phone_paren:" "}}</span></a>
-		<br/>
-		cell: <a class='no-link'href='tel://{{ contact.cell|phone:""}}'><span class='number'>{{ contact.cell|phone_paren:" "}}</span></a></h3>
+		{% if contact.cell %}cell: <a class='no-link' href='tel://{{ contact.cell|phone:""}}'><span class='number'>{{ contact.cell|phone_paren:" "}}</span></a>{% endif %}</h3>
 	</div>
 	<div>
 		<h3>{{ contact.address1|pretty_numbers }}<br/>
-		{{ contact.address2|pretty_numbers }}<br/>
-		{{ contact.city }}, {{ contact.state }} {{ contact.postal_code|pretty_numbers }}</h3>
+		{% if contact.address2 %}{{ contact.address2|pretty_numbers }}<br/>{% endif %}
+		{{ contact.city }}, {{ contact.state }} {% if contact.postal_code %}{{ contact.postal_code|pretty_numbers }}{% endif %}</h3>
 	</div>
 </div>

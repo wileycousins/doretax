@@ -4,4 +4,15 @@
 
 {% block center %}
 <h1>community</h1>
+<div id='pro'>
+    {% if assocs %} <h2 class='all-caps'>community associations</h2>
+    <ul>
+        {% for assoc in assocs %}
+        <li>{% if assoc.link %}<a class='no-link' href='{{ assoc.link }}'>{{ assoc.name }}</a>
+            {% else %}{{ assoc.name }}
+            {% endif %}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+</div>
 {% endblock %}
