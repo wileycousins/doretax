@@ -11,11 +11,11 @@
 		<a class='bottom-link' href='/contact'><h3>contact</h3></a>
 	</div>
 	<div>
-		<h3>{% if contact.email %}email: <a class='no-link' href='mailto://{{ contact.email }}'>{{ contact.email|emailuser_span:"all-caps" }}</a>
+		<h3>{% if contact.email %}email: <a class='no-link' href='mailto:{{ contact.email }}'>{{ contact.email|emailuser_span:"all-caps" }}</a>
 		<br/>{% endif %}
-		tel & fax: <a class='no-link' href='tel://{{ contact.telephone|phone:""}}'><span class='number'>{{ contact.telephone|phone_paren:" "}}</span></a>
+		tel & fax: <a class='no-link' href='tel:{{ contact.telephone|phone:""}}'><span class='number'>{{ contact.telephone|phone_paren:" "}}</span></a>
 		<br/>
-		{% if contact.cell %}cell: <a class='no-link' href='tel://{{ contact.cell|phone:""}}'><span class='number'>{{ contact.cell|phone_paren:" "}}</span></a>{% endif %}</h3>
+		{% if contact.cell %}cell: <a class='no-link' href='tel:{{ contact.cell|phone:""}}'><span class='number'>{{ contact.cell|phone_paren:" "}}</span></a>{% endif %}</h3>
 	</div>
 	<div>
 		<h3>{{ contact.address1|pretty_numbers }}<br/>
