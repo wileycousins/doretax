@@ -44,46 +44,64 @@ function animateIn(loc){
         var id = '#' + loc.replace('/', '');
     }
     $(id).children().addClass('current-page');
-    $.get('/get' + loc, function(data){
-        var title = $($(data)[0]).text();
-        $('title').text(title);
-        var html = '';
-        data = $(data);
-        for (var i = 0; i < $(data).length; i++) {
-            var id = $(data[i]).attr('id');
-            if (id == 'content') {
-                html += $(data[i]).html();
+    $.ajax({
+        url: '/get' + loc,
+        type: 'get',
+        success: function(data){
+            var title = $($(data)[0]).text();
+            $('title').text(title);
+            var html = '';
+            data = $(data);
+            for (var i = 0; i < $(data).length; i++) {
+                var id = $(data[i]).attr('id');
+                if (id == 'content') {
+                    html += $(data[i]).html();
+                }
             }
+            $('.center').html(html);
+            $('.center').stop().animate({
+                opacity: 1
+            }, fadeDelay);
+            init();
+        },
+        error: function(xhr, statusText, errorThrown){
+            var html = xhr.response;
+//			html = $(html).find('.center');
+			console.log(html);
+			$('.center').html(html);
+			$('.center').stop().animate({
+                opacity: 1
+            }, fadeDelay);
         }
-        $('.center').html(html);
-        $('.center').stop().animate({
-            opacity: 1
-        }, fadeDelay);
-        init();
     });
 }
 
-function submitContactForm() {
+function submitContactForm(){
     $('#form-feedback > h2').html('');
-    if($('#name').val() == '' || $('#name').val().search(/[ ]+/g) == 0) {
+    if ($('#name').val() == '' || $('#name').val().search(/[ ]+/g) == 0) {
         $('#name').focus();
         $('#form-feedback > h2').html('A name is a required...<br/>I need to call you something other than friend.');
-    } else if($('#email').val() == '') {
+    }
+    else if ($('#email').val() == '') {
         $('#email').focus();
         $('#form-feedback > h2').html('An email address is required...<br/>I need to be able to respond to you.');
-    } else if($('#email').val().split('@').length < 2) {
+    }
+    else if ($('#email').val().split('@').length < 2) {
         $('#email').focus();
         $('#form-feedback > h2').html('Sorry but that email is not valid...');
-    } else if($('#email').val().split('@')[1].split('.').length < 2) {
+    }
+    else if ($('#email').val().split('@')[1].split('.').length < 2) {
         $('#email').focus();
         $('#form-feedback > h2').html('Sorry but that email is not valid...');
-    } else if($('#comments').val() == '' || $('#comments').val() == 'Message*') {
+    }
+    else if ($('#comments').val() == '' || $('#comments').val() == 'Message*') {
         $('#comment').focus();
         $('#form-feedback > h2').html("A message is required...<br/>I need to know what I'll be helping you with.");
-    } else {
+    }
+    else {
         $('#send').trigger('mouseover');
         $('#send').unbind();
-        $.post('/submit-contact-form', $('#contact-form-id').serialize(), function(data) {
+        $.post('/submit-contact-form', $('#contact-form-id').serialize(), function(data){
             $('#form-feedback > h2').text(data);
         });
     }
@@ -110,27 +128,27 @@ function watchURLChange(){
 }
 
 function resize(){
-    var diff = 10;
+    var diff = 25;
     if ($('.right').height() + diff > $('#main').height()) {
         if (isIE) 
             $('#main').height($('.right').height() + diff + 25);
         else 
             $('#main').height($('.right').height() + diff);
     }
-    $('#nav').height($('div.right').height() - 290);
+    $('#nav').height($('div.right').height() - 10);
 }
 
 function smoothScroll(){
-	var pos = $(document).scrollTop();
-	var delta = 100;
+    var pos = $(document).scrollTop();
+    var delta = 100;
     if (pos > 179) {
         window.setTimeout(function(){
-			if (pos - delta < 179){
-				delta = pos - 179;
-			}
-			$(document).scrollTop(pos - delta);
-			window.setTimeout("smoothScroll();", 10);
-		}, 20);
+            if (pos - delta < 179) {
+                delta = pos - 179;
+            }
+            $(document).scrollTop(pos - delta);
+            window.setTimeout("smoothScroll();", 10);
+        }, 20);
     }
 }
 
@@ -145,69 +163,69 @@ function init(){
         $('#footer').removeClass('gradient-gray');
         $('.gradient-body').removeClass('gradient-body');
         $('body').add('div').addClass('ie');
-		//Contact page stuff
-		$('#name').val('Name*');
-        $('#name').bind('focus', function() {
-            if($(this).val() == 'Name*')
+        //Contact page stuff
+        $('#name').val('Name*');
+        $('#name').bind('focus', function(){
+            if ($(this).val() == 'Name*') 
                 $(this).val('');
         });
-        $('#name').bind('blur', function() {
-            if($(this).val() == '')
+        $('#name').bind('blur', function(){
+            if ($(this).val() == '') 
                 $(this).val('Name*');
         });
         $('#email').val('Email*');
-        $('#email').bind('focus', function() {
-            if($(this).val() == 'Email*')
+        $('#email').bind('focus', function(){
+            if ($(this).val() == 'Email*') 
                 $(this).val('');
         });
-        $('#email').bind('blur', function() {
-            if($(this).val() == '')
+        $('#email').bind('blur', function(){
+            if ($(this).val() == '') 
                 $(this).val('Email*');
         });
         $('#telephone').val('Phone');
-        $('#telephone').bind('focus', function() {
-            if($(this).val() == 'Phone')
+        $('#telephone').bind('focus', function(){
+            if ($(this).val() == 'Phone') 
                 $(this).val('');
         });
-        $('#telephone').bind('blur', function() {
-            if($(this).val() == '')
+        $('#telephone').bind('blur', function(){
+            if ($(this).val() == '') 
                 $(this).val('Phone');
         });
-        $('#comments').bind('blur', function() {
-            if($(this).val() == '')
+        $('#comments').bind('blur', function(){
+            if ($(this).val() == '') 
                 $(this).val('Message*');
         });
     }
-	$('#send').click(function() {
+    $('#send').click(function(){
         submitContactForm();
     });
-    $('input').add('#comments').blur(function() {
-        if($(this).val().search(/^[ \t]+/g) == 0)
+    $('input').add('#comments').blur(function(){
+        if ($(this).val().search(/^[ \t]+/g) == 0) 
             $(this).val($(this).val().replace(/^[ \t]+/g, ''));
     });
-    $('#contact-form-id').submit(function() {
+    $('#contact-form-id').submit(function(){
         submitContactForm();
     });
     $('#comments').val('Message*');
-    $('#comments').bind('focus', function() {
-        if($(this).val() == 'Message*')
+    $('#comments').bind('focus', function(){
+        if ($(this).val() == 'Message*') 
             $(this).val('');
     });
     var sendTrans = 250;
-    $('#send').bind('mouseover', function() {
+    $('#send').bind('mouseover', function(){
         $('#send > img:first').stop().animate({
-            opacity : 0
+            opacity: 0
         }, sendTrans);
         $('#send > img:last').stop().animate({
-            opacity : 1
+            opacity: 1
         }, sendTrans);
     });
-    $('#send').bind('mouseleave', function() {
+    $('#send').bind('mouseleave', function(){
         $('#send > img:first').stop().animate({
-            opacity : 1
+            opacity: 1
         }, sendTrans);
         $('#send > img:last').stop().animate({
-            opacity : 0
+            opacity: 0
         }, sendTrans);
     });
     //Current page = loc
