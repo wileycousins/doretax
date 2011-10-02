@@ -11,7 +11,7 @@
 		<a class='bottom-link' href='/contact'><h3>contact</h3></a>
 	</div>
 	<div>
-		<h3>{% if contact.email %}<span class='all-caps'>email: </span><a class='no-link' href='mailto:{{ contact.email }}'>{{ contact.email|emailuser_span:"number" }}</a></h3>
+		<h3>{% if contact.email %}<span class='all-caps'>email: </span><a class='no-link' href='mailto:{{ contact.email }}'>{{ contact.email|lower|emailuser_span:"all-caps" }}</a></h3>
 		{% endif %}
 		<h3 class='all-caps'>tel & fax: <a class='no-link' href='tel:{{ contact.telephone|phone:""}}'><span class='number'>{{ contact.telephone|phone_paren:" "}}</span></a></h3>
 		<h3 class='all-caps'>{% if contact.cell %}cell: <a class='no-link' href='tel:{{ contact.cell|phone:""}}'><span class='number'>{{ contact.cell|phone_paren:" "}}</span></a>{% endif %}</h3>

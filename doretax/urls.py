@@ -5,6 +5,8 @@ from doretax.settings import DEBUG
 from doretax.settings import AJAX_VIEW_PREFIX as ajax
 admin.autodiscover()
 
+#handler404 = 'doretax.views.doretax_404'
+
 # basic stuff
 urlpatterns = patterns('',
     (r'^favicon.ico$', redirect_to, {'url': '/site_media/static/images/fav.ico'}),

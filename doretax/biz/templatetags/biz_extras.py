@@ -16,10 +16,49 @@ def isEmail(email):
 
 @register.filter
 @stringfilter
+def pretty_numbers(value, class_name="number", autoescape=None):
+    """
+    Spans any numbers it finds in the provided class_name, or defaults to "number".
+    Does not currently support decimals.
+    e.g. 123 Main becomes <span class='number'>123</span> Main 
+    """
+    if autoescape:
+        esc = conditional_escape
+    else:
+        esc = lambda x: x
+    
+    spanbegin = "<span class='%s'>" % esc(class_name)
+    spanend = "</span>"
+    spanning = False
+    newvalue = ''
+    
+    for c in value:
+        if is_number(c):
+            if spanning:
+                newvalue += esc(c)
+            else:
+                newvalue += spanbegin + esc(c)
+                spanning = True 
+        else:
+            if spanning:
+                newvalue += spanend + esc(c)
+                spanning = False
+            else:
+                newvalue += esc(c)
+    
+    if spanning:
+        newvalue += spanend
+    
+    return mark_safe(newvalue)
+pretty_numbers.needs_autoescape = True
+
+@register.filter
+@stringfilter
 def emailuser_span(value, class_name, autoescape=None):
     """
     Tries to span the username of an email address with the provided class_name.
     e.g. foo@bar.com becomes <span class='class_name'>foo</span>@bar.com 
+    Also runs pretty numbers, b/c we need it for this project.
     """
     if autoescape:
         esc = conditional_escape
@@ -28,7 +67,9 @@ def emailuser_span(value, class_name, autoescape=None):
         
     if isEmail(value):
         parts = value.split('@')
-        newvalue = "<span class='%s'>%s</span>%s%s" % (class_name, esc(parts[0]), esc('@'), esc(parts[1]))
+        user = esc(parts[0])
+        user = pretty_numbers(user)
+        newvalue = "<span class='%s'>%s</span>%s%s" % (class_name, user, esc('@'), esc(parts[1]))
         return mark_safe(newvalue)
     else:
         return mark_safe(value)
@@ -84,40 +125,3 @@ def is_number(s):
     except ValueError:
         return False        
     
-@register.filter
-@stringfilter
-def pretty_numbers(value, class_name="number", autoescape=None):
-    """
-    Spans any numbers it finds in the provided class_name, or defaults to "number".
-    Does not currently support decimals.
-    e.g. 123 Main becomes <span class='number'>123</span> Main 
-    """
-    if autoescape:
-        esc = conditional_escape
-    else:
-        esc = lambda x: x
-    
-    spanbegin = "<span class='%s'>" % esc(class_name)
-    spanend = "</span>"
-    spanning = False
-    newvalue = ''
-    
-    for c in value:
-        if is_number(c):
-            if spanning:
-                newvalue += esc(c)
-            else:
-                newvalue += spanbegin + esc(c)
-                spanning = True 
-        else:
-            if spanning:
-                newvalue += spanend + esc(c)
-                spanning = False
-            else:
-                newvalue += esc(c)
-    
-    if spanning:
-        newvalue += spanend
-    
-    return mark_safe(newvalue)
-pretty_numbers.needs_autoescape = True

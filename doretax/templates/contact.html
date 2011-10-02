@@ -7,11 +7,11 @@
         Feel free to contact me through any of these:
         <br/>
     </p>
-    <h4><span class='all-caps'>email: </span><a class='no-link'href='mailto://{{ contact.email }}'>{{ contact.email|emailuser_span:"number" }}</a>
+    <h4><span class='all-caps'>email: </span><a class='no-link'href='mailto:{{ contact.email }}'>{{ contact.email|lower|emailuser_span:"all-caps" }}</a>
         <br/>
-        <span class='all-caps'>phone or fax: </span><a class='no-link'href='tel://{{ contact.telephone|phone:"" }}'><span class='number'>{{ contact.telephone|phone_paren:" " }}</span></a>
+        <span class='all-caps'>phone or fax: </span><a class='no-link'href='tel:{{ contact.telephone|phone:"" }}'><span class='number'>{{ contact.telephone|phone_paren:" " }}</span></a>
         <br/>
-        <span class='all-caps'>cellphone: </span><a class='no-link'href='tel://{{ contact.cell|phone:"" }}'><span class='number'>{{ contact.cell|phone_paren:" " }}</span></a>
+        <span class='all-caps'>cellphone: </span><a class='no-link'href='tel:{{ contact.cell|phone:"" }}'><span class='number'>{{ contact.cell|phone_paren:" " }}</span></a>
         <br/>
     </h4>
     <br/>

@@ -6,6 +6,8 @@ from django.views.generic.simple import redirect_to
 from doretax import settings
 from doretax.biz.models import BusinessDetail, Association, Service, Link
 
+#def doretax_404(request):
+
 def get_contact():
     "load the basic contact info for Dore' & Company"
     contact = BusinessDetail.objects.get(name="Dore' & Company") 
