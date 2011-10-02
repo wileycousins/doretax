@@ -17,7 +17,7 @@ To install users and business info locally:
     this will make a Decode72 and Lloyd user. Lloyd's password is 'password'
 
 To load old site data locally:
-    $ python manage.py loaddata biz/fixtures/old_site_data.yaml
+    $ python manage.py loaddata biz/fixtures/*.yaml
 
 If you don't know what Gondor instance label to use:
     primary
@@ -32,5 +32,5 @@ To deploy to gondor without touching database:
 To deploy to gondor and wipe database and install fixtures:
     $ gondor manage <instance_label> database:clear
     $ gondor deploy <instance_label> <hg_revision>
-    $ gondor run <instance_label> loaddata biz/fixtures/old_site_data.yaml
+    $ gondor run <instance_label> loaddata biz/fixtures/*.yaml
 

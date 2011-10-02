@@ -4,7 +4,7 @@ from django.http import Http404
 from django.shortcuts import render_to_response, Http404
 from django.views.generic.simple import redirect_to
 from doretax import settings
-from doretax.biz.models import BusinessDetail, Association, Service
+from doretax.biz.models import BusinessDetail, Association, Service, Link
 
 def get_contact():
     "load the basic contact info for Dore' & Company"
@@ -40,6 +40,7 @@ def client_center(request, ajax):
     args = common_args.copy()    
     args['year'] = datetime.now().year
     args['contact'] = get_contact()
+    args['links'] = Link.objects.client()
     if ajax:
         args['base_template'] = "base-ajax.html"
     return render_to_response('client-center.html', args)
@@ -49,6 +50,7 @@ def community(request, ajax):
     args['year'] = datetime.now().year
     args['contact'] = get_contact()
     args['assocs'] = Association.objects.civic()
+    args['links'] = Link.objects.community()
     if ajax:
         args['base_template'] = "base-ajax.html"
     return render_to_response('community.html', args)
@@ -90,8 +92,6 @@ if settings.DEBUG:
             args['base_template'] = "base-ajax.html"
         args.update(csrf(request))
         return render_to_response('500.html', args)
-
-
 
 
 def contact_request(request):
