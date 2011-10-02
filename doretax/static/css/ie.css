@@ -32,6 +32,7 @@ div.copy.ie li{
 
 #footer.ie > div.ie{
     position: relative;
+	left: 0px;
     float: left;
     width: 185px;
     padding: 10px;
