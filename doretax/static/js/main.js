@@ -65,8 +65,8 @@ function animateIn(loc){
             init();
         },
         error: function(xhr, statusText, errorThrown){
-            var html = $(xhr.response);
-			html = $(html).find('.center');
+            var html = xhr.response;
+//			html = $(html).find('.center');
 			console.log(html);
 			$('.center').html(html);
 			$('.center').stop().animate({
@@ -128,14 +128,14 @@ function watchURLChange(){
 }
 
 function resize(){
-    var diff = 10;
+    var diff = 25;
     if ($('.right').height() + diff > $('#main').height()) {
         if (isIE) 
             $('#main').height($('.right').height() + diff + 25);
         else 
             $('#main').height($('.right').height() + diff);
     }
-    $('#nav').height($('div.right').height() - 0);
+    $('#nav').height($('div.right').height() - 10);
 }
 
 function smoothScroll(){
