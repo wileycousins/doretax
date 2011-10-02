@@ -396,6 +396,16 @@ textarea#comments {
 	font-size: .8em;
 	font-family: "adobe garamond pro", serif;
 }
+.contact {
+	line-height: 1.5em;
+	color: #676767;
+}
+a.no-link {
+	font-family: Adobe Garamond Pro;
+}
+a:hover.no-link {
+	color: #676767;
+}
 
 .gradient-gray {
 /*Gradient code*/
