@@ -216,6 +216,11 @@ div.copy p{
 	line-height: 2em;
 	margin-left: 20px;
 }
+
+#pro li, div.copy li {
+	margin-left: 35px;
+}
+
 #pro h2.all-caps {
 	font-family: "adobe garamond pro", serif;
 	margin-bottom: 5px;	
@@ -250,8 +255,10 @@ div.right p {
 	padding: 0;
 	height: 100px;
 	width: 100%;
-	border-top: 4px solid #221F72;
 	z-index: 2;
+	border-top: 4px solid #221F72;
+	border-right: thin solid #CCC;
+	border-left: thin solid #CCC;
 }
 
 #footer > div{
@@ -283,7 +290,7 @@ div.right p {
 	font-family: "adobe garamond pro", serif;
 }
 
-#name-email-tel, #message, #send {
+/*#name-email-tel, #message, #send {
     float: left;
 	display: block;
 }
@@ -359,7 +366,7 @@ textarea#comments {
     width: 65px;
     padding-top: 18px;
     margin: 0 auto;
-}
+}*/
 
 #form-feedback {
     position: relative;
@@ -418,10 +425,18 @@ h3{
 	font-size: 1.4em;
 	color: #000;
 }
+
 .text h4{
 	font-size: 1em;
 	font-family: "adobe garamond pro", serif;
 
+}
+div.copy h6 {
+	font-size: 1em;
+	font-family: "adobe garamond pro", serif;
+	font-weight: 900;
+	color: #221F72;
+	font-variant: small-caps;
 }
 li{
 	font-size: 1em;
@@ -451,3 +466,47 @@ a:hover{
 	text-decoration: none;
     font-weight: 500;
 }
+
+.link {
+	font-family: Adobe Garamnond Pro, serif;
+	color: #221F72;
+}
+a.link:hover {
+	color: #333;
+}
+#name-email-tel input {
+	height: 50px;
+}
+#name-email-tel input, #message textarea {
+	width: 460px;
+	font-family: Adobe Garamond Pro, serif;
+	padding: 0 0 0 20px;
+	margin: 10px 0 0 0;
+	font-size: 1em;
+	border: thin solid #CCC;
+}
+#message textarea {
+	padding-top: 20px;
+	color: #a9a9a9;
+}
+#send input {
+	margin: 20px 0 0 0;
+	padding: 7px 5px 0 0;
+	height: 50px;
+	width: 100px;
+	color: #221F72;
+	font-family: "adobe garamond pro", serif;
+	font-weight: 400;
+	font-size: 2em;
+	font-style: italic;
+	text-align: center;
+	font-variant: normal;
+	background-color: #FFF;
+	border: thin solid #CCC;
+}
+#send input:hover {
+    cursor: pointer;
+	color: #CCC;
+}
+
+

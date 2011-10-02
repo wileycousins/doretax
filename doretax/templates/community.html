@@ -3,13 +3,19 @@
 {% block title %}Community | {% endblock %}
 
 {% block center %}
+<div class='page-heading-text'>
+    <p>
+        Below is a list of helpful links and resources Abbeville, Louisiana. 
+    </p>
+</div>
 <div class='copy'>
     {% if assocs %} <h2 class='all-caps'>community associations</h2>
     <ul>
         {% for assoc in assocs %}
-        <li>{% if assoc.link %}<a class='no-link' href='{{ assoc.link }}'>{{ assoc.name }}</a>
+        <li>{% if assoc.link %}<a class='no-link link' href='{{ assoc.link }}'>{{ assoc.name }}</a>
             {% else %}{{ assoc.name }}
-            {% endif %}</li>
+            {% endif %}
+		</li>
         {% endfor %}
     </ul>
     {% endif %}
