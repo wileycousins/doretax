@@ -381,6 +381,7 @@ textarea#comments {
 
 *.number{
 	font-weight: 700;
+	font-variant: small-caps;
 	font-size: .8em;
 	font-family: "adobe garamond pro", serif;
 }
@@ -431,6 +432,11 @@ a{
 	text-decoration: none;
 	font-weight: 500;
 	color: #221F72;
+}
+
+a:hover{
+	cursor: pointer;
+	opacity: .6;
 }
 
 *{
