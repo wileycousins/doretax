@@ -1,12 +1,14 @@
 {% extends base_template %}
 {% block title %}Client Center | {% endblock %}
 {% block center %}
-<h1>Client Center</h1>
-<div id='pro'>
-    {% if links %} <h2 class='all-caps'>client links</h2>
+<div class='page-heading-text'>
+	<p>Client Center</p>
+</div>
+<div class='copy'>
+    {% if links %} <h2 class='all-caps'>client links</h2><br/>
         {% for link in links %}<div class='links'>
-        <h3><a class='no-link' href='{{ link.link }}'>{{ link.name }}</a></h3>
-        {% if link.description %}{{ link.description }}{% endif %}            
+        <p><a class='no-link' href='{{ link.link }}'>{{ link.name }}</a></p>
+        {% if link.description %}<p class='description'>{{ link.description }}{% endif %}</p><br/>            
         </div>{% endfor %}
     {% endif %}
 </div>

@@ -14,10 +14,10 @@
     </ul>
     {% endif %}
     <br />
-    {% if links %} <h2 class='all-caps'>community links</h2>
+	{% if links %} <h2 class='all-caps'>community links</h2><br/>
         {% for link in links %}<div class='links'>
-        <h3><a class='no-link' href='{{ link.link }}'>{{ link.name }}</a></h3>
-        {% if link.description %}{{ link.description }}{% endif %}            
+        <p><a class='no-link' href='{{ link.link }}'>{{ link.name }}</a></p>
+        {% if link.description %}<p class='description'>{{ link.description }}{% endif %}</p><br/>            
         </div>{% endfor %}
     {% endif %}
 </div>
