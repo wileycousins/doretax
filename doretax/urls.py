@@ -5,7 +5,8 @@ from doretax.settings import DEBUG
 from doretax.settings import AJAX_VIEW_PREFIX as ajax
 admin.autodiscover()
 
-#handler404 = 'doretax.views.doretax_404'
+handler404 = 'doretax.views.doretax_404'
+handler500 = 'doretax.views.doretax_500'
 
 # basic stuff
 urlpatterns = patterns('',
@@ -31,8 +32,8 @@ urlpatterns += patterns('',
 
 if DEBUG:
     urlpatterns += patterns('',
-        (r'^(?P<ajax>(%s)?)404$' % ajax, 'views.four_oh_four'),
-        (r'^(?P<ajax>(%s)?)500$' % ajax, 'views.five_oh_oh'),
+        (r'^404$', 'views.doretax_404'),
+        (r'^500$', 'views.doretax_500'),
     )
 
 # oh why oh why isn't there a REMOVE_SLASH option...
