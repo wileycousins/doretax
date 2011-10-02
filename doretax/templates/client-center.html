@@ -7,7 +7,7 @@
 <div class='copy'>
     {% if links %} <h2 class='all-caps'>client links</h2><br/>
         {% for link in links %}<div class='links'>
-        <p><a class='no-link' href='{{ link.link }}'>{{ link.name }}</a></p>
+        <p><a class='no-link' target='_blank' href='{{ link.link }}'>{{ link.name }}</a></p>
         {% if link.description %}<p class='description'>{{ link.description }}{% endif %}</p><br/>            
         </div>{% endfor %}
     {% endif %}

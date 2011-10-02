@@ -49,7 +49,9 @@ function animateIn(loc){
         type: 'get',
         success: function(data){
             var title = $($(data)[0]).text();
-            $('title').text(title);
+			if (!isIE) {
+				$('title').text(title);
+			}
             var html = '';
             data = $(data);
             for (var i = 0; i < $(data).length; i++) {
@@ -157,10 +159,10 @@ function smoothScroll(){
 function init(){
     resize();
     if (isIE) {
-        if (!navigator.userAgent.match('MSIE 9.0')) {
+        if (!navigator.userAgent.match('MSIE 9')) {
             $('#image-banner').width(1000);
         }
-		if (navigator.userAgent.match('MSIE 6.0')) {
+		if (navigator.userAgent.match('MSIE 6')) {
 			$('form').remove();
 		}
         //		if (jQuery.browser.msie.version) {
@@ -261,7 +263,7 @@ function init(){
             }
         }
         else {
-            window.location.href = nextPage;
+			window.location.hash = nextPage;
         }
         window.setTimeout(function(){
             animateIn(nextPage);
