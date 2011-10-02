@@ -7,9 +7,10 @@ from doretax import settings
 from doretax.biz.models import BusinessDetail, Association, Service
 
 # load the basic contact info for Dore' & Company
-contact = BusinessDetail.objects.get(name="Dore' & Company") 
-if not contact:
-    contact = BusinessDetail.objects.all()[0]
+#contact = BusinessDetail.objects.get(name="Dore' & Company")
+contact = BusinessDetail.objects.all()
+if len(contact) > 0:
+    contact = contact[0]
 
 common_args = {
                'STATIC_URL' : settings.STATIC_URL,

@@ -19,6 +19,7 @@ AJAX_VIEW_PREFIX = AJAX_URL[1:]
 
 ADMIN_MEDIA_PREFIX = os.path.join(STATIC_URL, 'admin/')
 sys.path.append(PROJECT_ROOT)
+sys.path.append('%s/biz/' % PROJECT_ROOT)
  
 ADMINS = (
     ('Cole Wiley', 'cole@decode72.com'),
