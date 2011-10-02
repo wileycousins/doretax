@@ -1,5 +1,13 @@
 {% extends base_template %}
 {% block title %}Client Center | {% endblock %}
 {% block center %}
-<h1>cc</h1>
+<h1>Client Center</h1>
+<div id='pro'>
+    {% if links %} <h2 class='all-caps'>client links</h2>
+        {% for link in links %}<div class='links'>
+        <h3><a class='no-link' href='{{ link.link }}'>{{ link.name }}</a></h3>
+        {% if link.description %}{{ link.description }}{% endif %}            
+        </div>{% endfor %}
+    {% endif %}
+</div>
 {% endblock %}

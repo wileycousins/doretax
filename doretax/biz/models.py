@@ -65,10 +65,10 @@ class Service(models.Model):
 
 class LinkManager(models.Manager):
     def client(self):
-        return self.get_query_set().filter(kind='client')
+        return self.get_query_set().filter(type='client')
     
     def community(self):
-        return self.get_query_set().filter(kind='community')
+        return self.get_query_set().filter(type='community')
     
 class Link(models.Model):
     """

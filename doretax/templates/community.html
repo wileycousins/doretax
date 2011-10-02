@@ -14,5 +14,12 @@
         {% endfor %}
     </ul>
     {% endif %}
+    <br />
+    {% if links %} <h2 class='all-caps'>community links</h2>
+        {% for link in links %}<div class='links'>
+        <h3><a class='no-link' href='{{ link.link }}'>{{ link.name }}</a></h3>
+        {% if link.description %}{{ link.description }}{% endif %}            
+        </div>{% endfor %}
+    {% endif %}
 </div>
 {% endblock %}
