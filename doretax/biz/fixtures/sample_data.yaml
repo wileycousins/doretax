@@ -17,12 +17,3 @@
   model: biz.link
   pk: 1
   
-# add in some links to the original site data
-- fields: {link: 'http://www.rcabbeville.org/', name: Abbeville Rotary Club, type: civic}
-  model: biz.association
-  pk: 13
-  
-- fields: {link: 'http://www.naea.org/', name: National Society of Enrolled Agents, type: prof}
-  model: biz.association
-  pk: 6
-  

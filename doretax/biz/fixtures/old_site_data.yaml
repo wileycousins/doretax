@@ -2,7 +2,7 @@
 - fields: {link: '', name: Abbeville Cultural & Historical Alliance, type: civic}
   model: biz.association
   pk: 10
-- fields: {link: '', name: Abbeville Rotary Club, type: civic}
+- fields: {link: 'http://www.rcabbeville.org/', name: Abbeville Rotary Club, type: civic}
   model: biz.association
   pk: 13
 - fields: {link: '', name: Abbeville-Vermilion Chamber of Commerce, type: civic}
@@ -62,7 +62,7 @@
 - fields: {link: '', name: National Society of Enrolled Agents, type: prof}
   model: biz.association
   pk: 6
-- fields: {link: '', name: National Society of Public Accountants, type: prof}
+- fields: {link: 'http://www.naea.org/', name: National Society of Public Accountants, type: prof}
   model: biz.association
   pk: 1
 # association positions
