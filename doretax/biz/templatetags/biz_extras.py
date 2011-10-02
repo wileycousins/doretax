@@ -90,9 +90,9 @@ def phone_paren(value, delimiter):
         newvalue = newvalue.replace(extra, '')
     
     if len(newvalue) == 7:
-        return newvalue[:3] + delimiter + newvalue[3:]
+        return newvalue[:2] + delimiter + newvalue[2:]
     elif len(newvalue) == 10:
-        return "(%s) %s%s%s" % (newvalue[:3], newvalue[3:7], delimiter, newvalue[7:])
+        return "(%s) %s%s%s" % (newvalue[:2], newvalue[2:6], delimiter, newvalue[6:])
     else:
         print len(newvalue)
         return value
@@ -112,9 +112,9 @@ def phone(value, delimiter):
         newvalue = newvalue.replace(extra, '')
     
     if len(newvalue) == 7:
-        return newvalue[:3] + delimiter + newvalue[3:]
+        return newvalue[:2] + delimiter + newvalue[2:]
     elif len(newvalue) == 10:
-        return newvalue[:3] + delimiter + newvalue[3:7] +delimiter + newvalue[7:]
+        return newvalue[:2] + delimiter + newvalue[2:6] +delimiter + newvalue[6:]
     else:
         return value
 
