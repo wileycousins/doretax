@@ -66,7 +66,7 @@ function animateIn(loc){
         },
         error: function(xhr, statusText, errorThrown){
             var html = xhr.response;
-//			html = $(html).find('.center');
+			html = $(html).find('.center');
 			console.log(html);
 			$('.center').html(html);
 			$('.center').stop().animate({
