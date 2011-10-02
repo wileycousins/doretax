@@ -129,13 +129,18 @@ function watchURLChange(){
 
 function resize(){
     var diff = 25;
-    if ($('.right').height() + diff > $('#main').height()) {
+	var largest = $('.right');
+	if($('.center').height() > $(largest).height()){
+		largest = $('.center');
+		$('.right').height($(largest).height());
+	}
+    if ($(largest).height() + diff > $('#main').height()) {
         if (isIE) 
-            $('#main').height($('.right').height() + diff + 25);
+            $('#main').height($(largest).height() + diff + 25);
         else 
-            $('#main').height($('.right').height() + diff);
+            $('#main').height($(largest).height() + diff);
     }
-    $('#nav').height($('div.right').height() - 10);
+    $('#nav').height($(largest).height() - 10);
 }
 
 function smoothScroll(){
