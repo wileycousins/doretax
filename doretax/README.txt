@@ -32,5 +32,6 @@ To deploy to gondor without touching database:
 To deploy to gondor and wipe database and install fixtures:
     $ gondor manage <instance_label> database:clear
     $ gondor deploy <instance_label> <hg_revision>
-    $ gondor run <instance_label> loaddata biz/fixtures/*.yaml
+    $ gondor run <instance_label> loaddata biz/fixtures/old_site_data.yaml
+    $ gondor run <instance_label> loaddata biz/fixtures/sample_data.yaml
 
