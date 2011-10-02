@@ -4,7 +4,7 @@ Dore' and Company's django website project.
 dev site: doretax.decode72.com
 current site: doretax.com
 
-last modified: 2011.09.28
+last modified: 2011.10.01
 """
 
 Notable dependencies:
@@ -16,8 +16,8 @@ To install users and business info locally:
     $ python manage.py syncdb --noinput
     this will make a Decode72 and Lloyd user. Lloyd's password is 'password'
 
-To load old site data locally:
-    $ python manage.py loaddata biz/fixtures/old_site_data.yaml
+To load site data locally:
+    $ python manage.py loaddata biz/fixtures/*.yaml
 
 If you don't know what Gondor instance label to use:
     primary
@@ -33,4 +33,5 @@ To deploy to gondor and wipe database and install fixtures:
     $ gondor manage <instance_label> database:clear
     $ gondor deploy <instance_label> <hg_revision>
     $ gondor run <instance_label> loaddata biz/fixtures/old_site_data.yaml
+    $ gondor run <instance_label> loaddata biz/fixtures/sample_data.yaml
 

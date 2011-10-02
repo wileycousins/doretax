@@ -3,9 +3,8 @@
 import os
 import sys
 DEBUG = True
+IS_DEV = True
 TEMPLATE_DEBUG = DEBUG
-
-
 
 # root directories
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))

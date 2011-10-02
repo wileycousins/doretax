@@ -1,0 +1,19 @@
+# put in some example links because there were none on the old site
+- fields: {description: Through this IRS webpage you can get information about the
+      current status of your tax filing., link: 'https://sa1.www4.irs.gov/irfof/lang/en/irfofgetstatus.jsp',
+    name: 'Where''s My Refund?', type: client}
+  model: biz.link
+  pk: 2
+- fields: {description: "\"The Abbeville Cultural and Historical Alliance (L'Alliance\
+      \ Culturelle et Historique d'Abbeville) is a joint effort of four community\
+      \ service organizations in Vermilion Parish, Louisiana, namely, the Vermilion\
+      \ Arts Council, the Acadian Center, the Vermilion Historical Society, and the\
+      \ Giant Omelette Celebration (Confr\xE9rie d'Abbeville de l'Omelette G\xE9ante).\
+      \  These organizations have banded together to share expenses to maintain a\
+      \ Museum and Art Gallery for displaying works of art, genealogy of the Acadians,\
+      \ historical documents, photographs, and artifacts, and exhibits from international\
+      \ omelette celebrations.\"", link: 'http://www.abbevillemuseum.org/', name: Abbeville
+      Cultural and Historical Alliance, type: community}
+  model: biz.link
+  pk: 1
+  

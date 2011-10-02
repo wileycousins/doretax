@@ -3,5 +3,22 @@
 {% block title %}Community | {% endblock %}
 
 {% block center %}
-<h1>community</h1>
+<div class='copy'>
+    {% if assocs %} <h2 class='all-caps'>community associations</h2>
+    <ul>
+        {% for assoc in assocs %}
+        <li>{% if assoc.link %}<a class='no-link' href='{{ assoc.link }}'>{{ assoc.name }}</a>
+            {% else %}{{ assoc.name }}
+            {% endif %}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <br />
+	{% if links %} <h2 class='all-caps'>community links</h2><br/>
+        {% for link in links %}<div class='links'>
+        <p><a class='no-link' href='{{ link.link }}'>{{ link.name }}</a></p>
+        {% if link.description %}<p class='description'>{{ link.description }}{% endif %}</p><br/>            
+        </div>{% endfor %}
+    {% endif %}
+</div>
 {% endblock %}
