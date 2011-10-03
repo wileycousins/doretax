@@ -1,7 +1,8 @@
-On {{ form.datetime }}, {{ form.name }} sent the following message: 
-
-    {{ form.message }}
-    
-Contact Information:
-email: {{ form.email }}
-phone: {{ form.phone|default:"not provided" }}
+On {{ now }}, {{ name }} sent the following message: <br />
+<p>
+    {{ comments }}
+</p>
+Contact Information:<br />
+Name: {{ name }}<br />
+Email: <a href="mailto:{{ email }}">{{ email }}</a><br />
+Phone: {% if telephone %}<a href="tel:{{ telephone }}">{{ telephone }}</a>{% else %}not provided{% endif %}

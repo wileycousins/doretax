@@ -7,8 +7,9 @@ from django.template import Context, Template, RequestContext, loader
 from django.views.generic.simple import redirect_to
 from django.views.decorators.csrf import requires_csrf_token
 from doretax import settings
-from doretax.biz.models import BusinessDetail, Association, Service, Link
-from doretax.contactform.forms import ContactForm
+from biz.models import BusinessDetail, Association, Service, Link
+from contactform.views import submit as submit_contact_form
+#from contactform.view import validation
 
 def contact_info():
     contact = BusinessDetail.objects.get(name="Dore' & Company") 
@@ -91,10 +92,13 @@ def community(request, ajax):
 def contact(request, ajax):
     args = common_args(ajax)
     args.update(csrf(request))
+#    args.update(validation)
     return render_to_response('contact.html', args)
 
 def contact_request(request):
-    return contactform.views.submit(request, [contact_info()['email']], settings.DEBUG)
+    not_yet = [contact_info().email]
+    recipients = ['decode72@decode72.com']
+    return submit_contact_form(request, recipients, settings.DEBUG)
 
 def remove_slash(request, url):
     if url.endswith('/'):
