@@ -1,0 +1,7 @@
+On {{ form.datetime }}, {{ form.name }} sent the following message: 
+
+    {{ form.message }}
+    
+Contact Information:
+email: {{ form.email }}
+phone: {{ form.phone|default:"not provided" }}

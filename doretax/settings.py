@@ -75,6 +75,7 @@ ROOT_URLCONF = 'doretax.urls'
 TEMPLATE_DIRS = (
     os.path.join(PROJECT_ROOT, 'templates/'),
     os.path.join(PROJECT_ROOT, 'templates/admin/'),
+    os.path.join(PROJECT_ROOT, 'templates/common/'),
     os.path.join(PROJECT_ROOT, 'templates/registration/'),
 )
 
@@ -93,6 +94,7 @@ INSTALLED_APPS = (
     'django.contrib.localflavor',
     'django.contrib.staticfiles',
     'biz',
+    'contactform',
 #    'south',
 )
 

@@ -13,7 +13,7 @@
 <div id='contact-bar' class='gradient-gray'>
 	<div>
 		<h5>
-			{% if contact.email %}<span class='all-caps'>email: </span><a class='no-link' href='mailto:{{ contact.email }}'>{{ contact.email|lower|emailuser_span:"all-caps" }}</a> &nbsp;&nbsp;|&nbsp;&nbsp;{% endif %}
+			<span class='all-caps'>email: </span><a class='no-link' href='mailto:{{ contact.email }}'>{{ contact.email|lower|emailuser_span:"all-caps" }}</a> &nbsp;&nbsp;|&nbsp;&nbsp;
 			<span class='all-caps'>tel{% if contact.telephone == contact.fax %} &amp; fax{% endif %}: </span><a class='no-link' href='tel:{{ contact.telephone|phone:""}}'><span class='number'>{{ contact.telephone|phone_paren:" "}}</span></a>
 			{% if contact.fax and contact.fax != contact.telephone %}&nbsp;&nbsp;|&nbsp;&nbsp;<span class='all-caps'>fax: </span><a class='no-link' href='tel:{{ contact.fax|phone:""}}'><span class='number'>{{ contact.fax|phone_paren:" "}}</span></a>{% endif %}
 			{% if contact.cell %}&nbsp;&nbsp;|&nbsp;&nbsp;<span class='all-caps'>cell: </span><a class='no-link' href='tel:{{ contact.cell|phone:""}}'><span class='number'>{{ contact.cell|phone_paren:" "}}</span></a>{% endif %}

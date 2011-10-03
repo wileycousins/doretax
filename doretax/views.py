@@ -3,11 +3,19 @@ from django import http
 from django.core.context_processors import csrf
 from django.http import Http404
 from django.shortcuts import render_to_response, Http404
-from django.template import Context, RequestContext, loader
+from django.template import Context, Template, RequestContext, loader
 from django.views.generic.simple import redirect_to
 from django.views.decorators.csrf import requires_csrf_token
 from doretax import settings
 from doretax.biz.models import BusinessDetail, Association, Service, Link
+from doretax.contactform.forms import ContactForm
+
+def contact_info():
+    contact = BusinessDetail.objects.get(name="Dore' & Company") 
+    if not contact:
+        contact = BusinessDetail.objects.all()[0]
+    return contact
+
 def common_args(ajax=False):
     """
     The common arguments for all doretax views.
@@ -18,15 +26,10 @@ def common_args(ajax=False):
     contact: doretax business contact information
     base_template: the default base template  
     """
-    contact = BusinessDetail.objects.get(name="Dore' & Company") 
-    
-    if not contact:
-        contact = BusinessDetail.objects.all()[0]
-
     args = {
                'STATIC_URL' : settings.STATIC_URL,
                'year' : datetime.now().year,
-               'contact': contact,
+               'contact': contact_info(),
                'base_template' : 'base.html',
            }
     if ajax:
@@ -100,42 +103,32 @@ def admin_add_slash(request):
     return redirect_to(request, request.path + '/')
 
 def contact_request(request):
-    if request.method != "POST":
+    if request.method == "POST":
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            name = form.cleaned_data['name']
+            email = form.cleaned_data['email']
+            telephone = form.cleaned_data['telephone']
+            comments = form.cleaned_data['comments']
+            datetime = datetime.now()
+
+            recipients = ['info@example.com']
+
+            from django.core.mail import send_mail
+            send_mail(subject, message, sender, recipients)
+            
+            return render_to_response('contactform/success.html')
+        else:
+            return render_to_response('contactform/fail.html')
+    else:
         raise Http404
-    name = request.POST["name"]
-    email = request.POST["email"]
-    telephone = request.POST["telephone"]
-    comments = request.POST["comments"]
-    now = datetime.now()
-    return http.HttpResponse("""Hi %s and thanks for contacting us. I still need to finish this.""" % name) 
-#    message = """
-#On %s, %s sent the following message: 
-#
-#    %s
-#    
-#Contact Information:
-#email: %s
-#phone: %s
-#""" % (now, name, comments, email, telephone) 
-#    if not settings.IS_DEV:
-#        #send_mail(subject, message, from_email, recipient_list, fail_silently=False, auth_user=None, auth_password=None, connection=None)
-#        send_mail("Dore' & Company Contact Form from %s" % name, message, '"%s" <%s>' % (name, email), ['contact.form@doretax.com'], fail_silently=False)
-#        send_mail("Dore' & Company ", auto_response(name, message), '"Decode72" <hello@decode72.com>', [email], fail_silently=False)
-#    return HttpResponse("""Hi %s and thanks for contacting us. We'll get back with you shortly.""" % name)
-#
-#def auto_response(name, message):
-#    return """
-#Hi %s!,
-#
-#We received your message and will get back with you shortly. 
-#If you have no idea what we're talking about then someone probably used your email address in our contact form. 
-#If this is the case we most sincerely apologize.   
-#
-#Cheers,
-#
-#Decode72
-#http://decode72.com
-#
-#--------------------------------------------------------------------------------
-#%s
-#""" % (name, message)
+    
+    
+    
+    t = loader.get_template("contactform/email-webmaster.html")
+    
+    
+    if not settings.IS_DEV:
+        #send_mail(subject, message, from_email, recipient_list, fail_silently=False, auth_user=None, auth_password=None, connection=None)
+        send_mail("Dore' & Company Contact Form from %s" % name, message, '"%s" <%s>' % (name, email), ['decode72@decode72.com'], fail_silently=False)
+    return HttpResponse("""Hi %s and thanks for contacting us. We'll get back with you shortly.""" % name)
