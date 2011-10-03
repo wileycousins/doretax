@@ -57,7 +57,6 @@ def submit(request, recipients=None, debug=False):
             if not debug:
                 send_mail(subject, message, sender, recipients, fail_silently=False) #,auth_user=None, auth_password=None, connection=None)
             
-#            return HttpResponse(message)
             return render_to_response('success.html', form.cleaned_data)
         else:
             return render_to_response('fail.html')
