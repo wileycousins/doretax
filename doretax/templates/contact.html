@@ -7,8 +7,8 @@
         Feel free to contact me through any of these:
         <br/><br/>
     </p>
-    <h4 class="contact">{% if contact.email %}<span class='all-caps'>email: </span><a class='no-link' href='mailto:{{ contact.email }}'>{{ contact.email|lower|emailuser_span:"all-caps" }}</a>
-        <br/>{% endif %}
+    <h4 class="contact"><span class='all-caps'>email: </span><a class='no-link' href='mailto:{{ contact.email }}'>{{ contact.email|lower|emailuser_span:"all-caps" }}</a>
+        <br/>
         <span class='all-caps'>phone{% if contact.telephone == contact.fax %} or fax{% endif %}: </span><a class='no-link' href='tel:{{ contact.telephone|phone:""}}'><span class='number'>{{ contact.telephone|phone_paren:" "}}</span></a>
         {% if contact.fax and contact.fax != contact.telephone %}<br /><span class='all-caps'>fax: </span><a class='no-link' href='tel:{{ contact.fax|phone:""}}'><span class='number'>{{ contact.fax|phone_paren:" "}}</span></a>{% endif %}
         <br/>

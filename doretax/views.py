@@ -93,6 +93,9 @@ def contact(request, ajax):
     args.update(csrf(request))
     return render_to_response('contact.html', args)
 
+def contact_request(request):
+    return contactform.views.submit(request, [contact_info()['email']], settings.DEBUG)
+
 def remove_slash(request, url):
     if url.endswith('/'):
         return redirect_to(request, '/' + url.rstrip('/'))
@@ -101,34 +104,3 @@ def remove_slash(request, url):
     
 def admin_add_slash(request):
     return redirect_to(request, request.path + '/')
-
-def contact_request(request):
-    if request.method == "POST":
-        form = ContactForm(request.POST)
-        if form.is_valid():
-            name = form.cleaned_data['name']
-            email = form.cleaned_data['email']
-            telephone = form.cleaned_data['telephone']
-            comments = form.cleaned_data['comments']
-            datetime = datetime.now()
-
-            recipients = ['info@example.com']
-
-            from django.core.mail import send_mail
-            send_mail(subject, message, sender, recipients)
-            
-            return render_to_response('contactform/success.html')
-        else:
-            return render_to_response('contactform/fail.html')
-    else:
-        raise Http404
-    
-    
-    
-    t = loader.get_template("contactform/email-webmaster.html")
-    
-    
-    if not settings.IS_DEV:
-        #send_mail(subject, message, from_email, recipient_list, fail_silently=False, auth_user=None, auth_password=None, connection=None)
-        send_mail("Dore' & Company Contact Form from %s" % name, message, '"%s" <%s>' % (name, email), ['decode72@decode72.com'], fail_silently=False)
-    return HttpResponse("""Hi %s and thanks for contacting us. We'll get back with you shortly.""" % name)

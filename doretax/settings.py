@@ -3,7 +3,7 @@
 import os
 import sys
 DEBUG = True
-IS_DEV = True
+#IS_DEV = True
 TEMPLATE_DEBUG = DEBUG
 
 # root directories
