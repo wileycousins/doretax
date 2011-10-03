@@ -247,7 +247,6 @@ div.right p {
 	line-height: 1.4em;
 	font-family: "adobe garamond pro", serif;
 }
-
 #footer{
 	float: left;
 	margin: 0;
@@ -270,7 +269,6 @@ div.right p {
 	padding: 10px;
 	margin-right: 7px;
 	font-family: "adobe garamond pro", serif;
-	font-weight: 700;
 }
 
 #footer > div:last-child{
@@ -280,7 +278,6 @@ div.right p {
 #footer > div.small{
 	width: 100px;
 	font-family: "adobe garamond pro", serif;
-	font-weight: 700;
 }
 
 #footer h3, #footer a{
@@ -289,7 +286,9 @@ div.right p {
 	color: #221F72;
 	font-family: "adobe garamond pro", serif;
 }
-
+#footer a:hover {
+	color: #676767;
+}
 /*#name-email-tel, #message, #send {
     float: left;
 	display: block;

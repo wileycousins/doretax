@@ -1,7 +1,7 @@
 {% load biz_extras %}
 <div id='footer' class='gradient-gray'>
 	<div class='all-caps'>
-		<h3><a class='bottom-link' href='/'>dor&eacute; &amp; company {{ year|pretty_numbers }}<br/></a><a class='bottom-link' href='/privacy'>privacy</a><br/><a class='bottom-link' href='/terms'>terms and conditions</a></h3>
+		<h3><a class='bottom-link' href='/'>dor&eacute; &amp; company {{ year|pretty_numbers }}<br/></a><a class='bottom-link' href='/privacy'>privacy</a><br/></h3>
 	</div>
 	<div class='small all-caps'>
 		<a class='bottom-link' href='/'><h3>home</h3></a>
@@ -11,7 +11,8 @@
 		<a class='bottom-link' href='/contact'><h3>contact</h3></a>
 	</div>
 	<div>
-		<h3><span class='all-caps'>email: </span><a class='no-link' href='mailto:{{ contact.email }}'>{{ contact.email|lower|emailuser_span:"all-caps" }}</a></h3>
+		<h3>{% if contact.email %}<span class='all-caps'>email: <a class='no-link' href='mailto:{{ contact.email }}'>{{ contact.email|lower|emailuser_span:"all-caps" }}</span></a></h3>
+		{% endif %}
 		<h3 class='all-caps'>tel{% if contact.telephone == contact.fax %} &amp; fax{% endif %}: <a class='no-link' href='tel:{{ contact.telephone|phone:""}}'><span class='number'>{{ contact.telephone|phone_paren:" "}}</span></a></h3>
         {% if contact.fax and contact.fax != contact.telephone %}<h3 class='all-caps'>fax: <a class='no-link' href='tel:{{ contact.fax|phone:""}}'><span class='number'>{{ contact.fax|phone_paren:" "}}</span></a></h3>{% endif %}
 		<h3 class='all-caps'>{% if contact.cell %}cell: <a class='no-link' href='tel:{{ contact.cell|phone:""}}'><span class='number'>{{ contact.cell|phone_paren:" "}}</span></a>{% endif %}</h3>
