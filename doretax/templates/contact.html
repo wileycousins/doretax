@@ -1,4 +1,4 @@
-{% extends base_template %}
+{% extends base_template|default:"base.html" %}
 {% block title %}Contact | {% endblock %}
 {% block center %}
 {% load biz_extras %}
@@ -21,7 +21,7 @@
     </p>
 </div>
 <div class='copy'>
-    <form id="contact-form-id" method="POST" action="/submit-contact-form">
+    <form id="contact-form-id" method="POST" action="/contact/submit">
         {% csrf_token %}
         <fieldset>
             <h6>(*) required field</h6>

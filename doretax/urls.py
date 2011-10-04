@@ -29,7 +29,7 @@ urlpatterns += patterns('',
 
 # contact form
 urlpatterns += patterns('',
-    (r'^submit-contact-form$', 'views.contact_request'),
+    (r'^contact/submit$', 'views.contact_submit'),
 )
 
 if DEBUG:

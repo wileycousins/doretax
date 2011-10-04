@@ -1,6 +1,6 @@
 from datetime import datetime
 from django.core.mail import send_mail
-from django.shortcuts import Http404, render_to_response
+from django.shortcuts import Http404
 from django.template.loader import render_to_string
 from forms import ContactForm
 
@@ -36,12 +36,19 @@ def render_sender(data):
     """
     return '"%s" <%s>' % (data['name'], data['email'])
             
-def submit(request, recipients=None, debug=False):
+def submit(request, recipients=None, debug=False, redirect_url=None):
     """
-    Submit the contact form request to the specified recipients.
-    If debug is True, do everything but actually send the message.
+    Submit the contact form request.
+    
+    recipients: 
+        the recipients to which the rendered form will be sent
+    debug:
+        if True, do everything but actually send the message
+    redirect_url:
+        if supplied, redirect a non-POST request to this url rather than raise a 404 error
     """
     if request.method == "POST":
+        args = { 'success' : False }
         form = ContactForm(request.POST)
         if form.is_valid():
             sender = render_sender(form.cleaned_data)
@@ -51,9 +58,16 @@ def submit(request, recipients=None, debug=False):
             if not debug:
                 send_mail(subject, message, sender, recipients, fail_silently=False) #,auth_user=None, auth_password=None, connection=None)
             
-            return render_to_response('success.html', form.cleaned_data)
+            args = form.cleaned_data
+            args['message'] = render_to_string('success.html', args)
+            args['success'] = True
+            return args
         else:
-            return render_to_response('fail.html')
-    else:
+            args['message'] = render_to_string('fail.html')
+            return args
+    elif redirect_url:
+         from django.views.generic.simple import redirect_to
+         redirect_to(request, redirect_url)
+    else:  
         raise Http404
     
