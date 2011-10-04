@@ -74,9 +74,7 @@ ROOT_URLCONF = 'doretax.urls'
 
 TEMPLATE_DIRS = (
     os.path.join(PROJECT_ROOT, 'templates/'),
-    os.path.join(PROJECT_ROOT, 'templates/admin/'),
     os.path.join(PROJECT_ROOT, 'templates/common/'),
-    os.path.join(PROJECT_ROOT, 'templates/registration/'),
 )
 
 STATICFILES_DIRS = (
@@ -84,12 +82,12 @@ STATICFILES_DIRS = (
 )
 
 INSTALLED_APPS = (
-    'django.contrib.admindocs',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.messages',
     'django.contrib.sessions',
     'django.contrib.admin',
+#    'django.contrib.admindocs',
     # everything above needed for admin
     'django.contrib.localflavor',
     'django.contrib.staticfiles',
