@@ -1,27 +1,27 @@
-{% extends base_template %}
+{% extends base_template|default:"base.html" %}
 {% block title %}Contact | {% endblock %}
 {% block center %}
 {% load biz_extras %}
 <div class='page-heading-text'>
     <p>
         Feel free to contact me through any of these:
-        <br/>
+        <br/><br/>
     </p>
-	<br/>
-    <h4><span class='all-caps'>email: </span><a class='no-link'href='mailto://{{ contact.email }}'>{{ contact.email|emailuser_span:"number" }}</a>
+    <h4 class="contact"><span class='all-caps'>email: </span><a class='no-link' href='mailto:{{ contact.email }}'>{{ contact.email|lower|emailuser_span:"all-caps" }}</a>
         <br/>
-        <span class='all-caps'>phone or fax: </span><a class='no-link'href='tel://{{ contact.telephone|phone:"" }}'><span class='number'>{{ contact.telephone|phone_paren:" " }}</span></a>
+        <span class='all-caps'>phone{% if contact.telephone == contact.fax %} or fax{% endif %}: </span><a class='no-link' href='tel:{{ contact.telephone|phone:""}}'><span class='number'>{{ contact.telephone|phone_paren:" "}}</span></a>
+        {% if contact.fax and contact.fax != contact.telephone %}<br /><span class='all-caps'>fax: </span><a class='no-link' href='tel:{{ contact.fax|phone:""}}'><span class='number'>{{ contact.fax|phone_paren:" "}}</span></a>{% endif %}
         <br/>
-        <span class='all-caps'>cellphone: </span><a class='no-link'href='tel://{{ contact.cell|phone:"" }}'><span class='number'>{{ contact.cell|phone_paren:" " }}</span></a>
-        <br/>
+        {% if contact.cell %}<span class='all-caps'>cell phone: </span><a class='no-link'href='tel:{{ contact.cell|phone:"" }}'><span class='number'>{{ contact.cell|phone_paren:" " }}</span></a>
+        <br/>{% endif %}
     </h4>
-    <br/>
+    <br/><br/>
     <p>
         Or simply through the contact form below.
     </p>
 </div>
 <div class='copy'>
-    <form id="contact-form-id" method="POST" action="/submit-contact-form">
+    <form id="contact-form-id" method="POST" action="/contact">
         {% csrf_token %}
         <fieldset>
             <h6>(*) required field</h6>
@@ -38,13 +38,20 @@
                 <br/>
             </div>
             <div id="message">
-                <textarea id="comments" name='comments' required="required" rows="20" placeholder="Message*">
-                    Message*
+                <textarea id="comments" name='comments' required="required" rows="10" placeholder="Leave us a message*">
+                    Leave us a message*
                 </textarea>
             </div>
             <div id="send">
-                <img src='{{ STATIC_URL }}images/send-button.png'/><img src='{{ STATIC_URL }}images/send-button-hover.png' style='opacity: 0;'/><!--<h2 class="send">send</h2>
-                <input type="submit" value="send" id="submit" class="send">-->
+                <!--<img src='{{ STATIC_URL }}images/send-button.png'/><img src='{{ STATIC_URL }}images/send-button-hover.png' style='opacity: 0;'/><h2 class="send">send</h2>-->
+                <input type="submit" value="Send" id="submit" class="send">
+
+<!-- hey cole, here's the validation messages. i'm serious about that pie crust, it is awesome - you could probably win in some old time county fair with that crust:
+                {{ invalid_email }}
+                {{ required_email }}
+                {{ required_message }}
+                {{ required_name }}
+-->
             </div>
         </fieldset>
     </form>

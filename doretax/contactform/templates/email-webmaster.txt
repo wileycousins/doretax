@@ -1,0 +1,8 @@
+On {{ now }}, {{ name }} sent the following message:
+
+{{ comments }}
+
+Contact Information:
+Name: {{ name }}
+Email: {{ email }}
+Phone: {% if telephone %}{{ telephone }}{% else %}not provided{% endif %}

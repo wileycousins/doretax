@@ -3,7 +3,7 @@
 import os
 import sys
 DEBUG = True
-IS_DEV = True
+#IS_DEV = True
 TEMPLATE_DEBUG = DEBUG
 
 # root directories
@@ -18,6 +18,7 @@ AJAX_VIEW_PREFIX = AJAX_URL[1:]
 
 ADMIN_MEDIA_PREFIX = os.path.join(STATIC_URL, 'admin/')
 sys.path.append(PROJECT_ROOT)
+sys.path.append('%s/biz/' % PROJECT_ROOT)
  
 ADMINS = (
     ('Cole Wiley', 'cole@decode72.com'),
@@ -73,8 +74,7 @@ ROOT_URLCONF = 'doretax.urls'
 
 TEMPLATE_DIRS = (
     os.path.join(PROJECT_ROOT, 'templates/'),
-    os.path.join(PROJECT_ROOT, 'templates/admin/'),
-    os.path.join(PROJECT_ROOT, 'templates/registration/'),
+    os.path.join(PROJECT_ROOT, 'templates/common/'),
 )
 
 STATICFILES_DIRS = (
@@ -82,16 +82,17 @@ STATICFILES_DIRS = (
 )
 
 INSTALLED_APPS = (
-    'django.contrib.admindocs',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.messages',
     'django.contrib.sessions',
     'django.contrib.admin',
+#    'django.contrib.admindocs',
     # everything above needed for admin
     'django.contrib.localflavor',
     'django.contrib.staticfiles',
     'biz',
+    'contactform',
 #    'south',
 )
 

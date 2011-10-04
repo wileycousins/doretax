@@ -103,7 +103,7 @@ function submitContactForm(){
     else {
         $('#send').trigger('mouseover');
         $('#send').unbind();
-        $.post('/submit-contact-form', $('#contact-form-id').serialize(), function(data){
+        $.post('/contact', $('#contact-form-id').serialize(), function(data){
             $('#form-feedback > h2').text(data);
         });
     }
@@ -263,7 +263,7 @@ function init(){
             }
         }
         else {
-			window.location.hash = nextPage;
+			window.location.href = nextPage;
         }
         window.setTimeout(function(){
             animateIn(nextPage);

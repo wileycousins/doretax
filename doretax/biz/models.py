@@ -97,7 +97,7 @@ class BusinessDetail(models.Model):
     """
     name = models.CharField(max_length=100, unique=True)
     owner = models.ForeignKey(User, blank=True, null=True)
-    email = models.EmailField(blank=True, null=True, help_text="(optional)")
+    email = models.EmailField()
     fax = PhoneNumberField(blank=True, null=True, help_text="(optional)")
     cell = PhoneNumberField(blank=True, null=True, help_text="(optional)")
     telephone = PhoneNumberField()

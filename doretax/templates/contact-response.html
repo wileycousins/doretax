@@ -1,0 +1,13 @@
+{% extends base_template|default:"base.html" %}
+{% block title %}Contact {% if success %}Confirmation{% else %}Error{% endif %} | {% endblock %}
+{% block center %}
+{% load biz_extras %}
+<div class='page-heading-text'>
+    <p>
+        {{ message }}
+    </p>
+</div>
+<div class='copy'>
+    <h2 class='all-caps'><a href="/">return home</a></h2>
+</div>
+{% endblock %}

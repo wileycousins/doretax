@@ -5,11 +5,15 @@ from doretax.settings import DEBUG
 from doretax.settings import AJAX_VIEW_PREFIX as ajax
 admin.autodiscover()
 
+# custom 404 and 500 handlers
+handler404 = 'views.doretax_404'
+handler500 = 'views.doretax_500'
+
 # basic stuff
 urlpatterns = patterns('',
     (r'^favicon.ico$', redirect_to, {'url': '/site_media/static/images/fav.ico'}),
     (r'^admin/', include(admin.site.urls)),
-    (r'^admin/doc/', include('django.contrib.admindocs.urls')),
+#    (r'^admin/doc/', include('django.contrib.admindocs.urls')),
     (r'^robots.txt$', direct_to_template, {'template':'robots.txt', 'mimetype':'text/plain'}),
     (r'^sitemap.txt$', direct_to_template, {'template':'sitemap.txt', 'mimetype':'text/plain'}),
 )
@@ -23,14 +27,11 @@ urlpatterns += patterns('',
     (r'^(?P<ajax>(%s)?)contact$' % ajax, 'views.contact'),
 )
 
-urlpatterns += patterns('',
-    (r'^submit-contact-form$', 'views.contact_request'),
-)
-
 if DEBUG:
+    # let us test out missing page and server error when debugging
     urlpatterns += patterns('',
-        (r'^(?P<ajax>(%s)?)404$' % ajax, 'views.four_oh_four'),
-        (r'^(?P<ajax>(%s)?)500$' % ajax, 'views.five_oh_oh'),
+        (r'^404$', 'views.doretax_404'),
+        (r'^500$', 'views.doretax_500'),
     )
 
 # oh why oh why isn't there a REMOVE_SLASH option...
