@@ -1,4 +1,5 @@
 from datetime import datetime
+from django.core.mail import send_mail
 from django.shortcuts import Http404, HttpResponse
 from django.template.loader import render_to_string
 from forms import ContactForm
@@ -55,8 +56,7 @@ def submit(request, recipients=None, debug=False, redirect_url=None):
             message = render_message(form.cleaned_data)
             
             if not debug:
-                from django.core.mail import send_mail
-                send_mail(subject, message, sender, recipients, fail_silently=False) #,auth_user=None, auth_password=None, connection=None)
+                send_mail("subject", "message", '"zack" <zackdever@gmail.com>', "zack@decode72.com", fail_silently=False) #,auth_user=None, auth_password=None, connection=None)
             
             args = form.cleaned_data
             args['message'] = render_to_string('success.html', args)
