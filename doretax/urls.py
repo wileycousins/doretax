@@ -27,11 +27,6 @@ urlpatterns += patterns('',
     (r'^(?P<ajax>(%s)?)contact$' % ajax, 'views.contact'),
 )
 
-# contact form
-urlpatterns += patterns('',
-    (r'^contact/submit$', 'views.contact_submit'),
-)
-
 if DEBUG:
     # let us test out missing page and server error when debugging
     urlpatterns += patterns('',

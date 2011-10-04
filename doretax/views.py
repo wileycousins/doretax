@@ -8,8 +8,9 @@ from django.views.generic.simple import redirect_to
 from django.views.decorators.csrf import requires_csrf_token
 from doretax import settings
 from biz.models import BusinessDetail, Association, Service, Link
-from contactform.views import submit as submit_contact_form
-from contactform.views import validation as contact_validation
+from contactform.utils import submit as submit_contact_form
+from contactform.utils import validation as contact_validation
+from contactform.forms import ContactForm
 
 def contact_info():
     """
@@ -126,6 +127,10 @@ def contact(request, ajax):
         csrf_token
         contact_validation context from contactform 
     """
+    if request.method == "POST":
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            return contact_submit(request)
     args = common_args(ajax)
     args.update(csrf(request))
     args.update(contact_validation)
