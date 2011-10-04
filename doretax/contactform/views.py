@@ -1,28 +1,24 @@
 from datetime import datetime
 from django.core.mail import send_mail
-from django.shortcuts import Http404, render_to_response, HttpResponse
-from django.template import Context, Template
-from django.template.loader import get_template
+from django.shortcuts import Http404, render_to_response
+from django.template.loader import render_to_string
 from forms import ContactForm
 
-#invalid_email = 
-#
-#validation = {
-#    "invalid_email" : invalid_email,
-#    "required_email" : required_email,
-#    "required_message" : required_message,
-#    "required_name" : required_name,
-#}
+validation = {
+    "invalid_email" : render_to_string("invalid-email.html"),
+    "required_email" : render_to_string("required-email.html"),
+    "required_message" : render_to_string("required-message.html"),
+    "required_name" : render_to_string("required-name.html"),
+}
 
 def render_subject(data):
     """
     Render the subject line using the subject.html template.
+    Collapses rendered to one line and removes leading and trailing whitespace.
     data - expected to be cleaned form data
     """
-    t = get_template('subject.html')
-    c = Context(data)
-    return t.render(c)
- 
+    subject = render_to_string("subject.html", data)
+    return ' '.join(subject.split())  
     
 def render_message(data):
     """
@@ -30,9 +26,7 @@ def render_message(data):
     data - expected to be cleaned form data
     """
     data['now'] = datetime.now()
-    t = get_template('email-webmaster.html')
-    c = Context(data)
-    return t.render(c)
+    return render_to_string("email-webmaster.html", data)
             
 def render_sender(data):            
     """
