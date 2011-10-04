@@ -5,4 +5,5 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = "HAL@decode72.com"
 EMAIL_HOST_PASSWORD = "geauxmice"
-
+DEFAULT_FROM_EMAIL = "HAL@decode72.com"
+SERVER_EMAIL = "HAL@decode72.com"
