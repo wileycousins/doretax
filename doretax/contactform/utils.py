@@ -13,20 +13,20 @@ validation = {
 
 def render_subject(data):
     """
-    Render the subject line using the subject.html template.
+    Render the subject line using the subject.txt template.
     Collapses rendered to one line and removes leading and trailing whitespace.
     data - expected to be cleaned form data
     """
-    subject = render_to_string("subject.html", data)
+    subject = render_to_string("subject.txt", data)
     return ' '.join(subject.split())  
     
 def render_message(data):
     """
-    Render the message using the email-webmaster.html template.
+    Render the message using the email-webmaster.txt template.
     data - expected to be cleaned form data
     """
     data['now'] = datetime.now()
-    return render_to_string("email-webmaster.html", data)
+    return render_to_string("email-webmaster.txt", data)
             
 def render_sender(data):            
     """
