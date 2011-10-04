@@ -122,6 +122,8 @@ def community(request, ajax):
 def contact(request, ajax):
     """
     Renders the contact page.
+    If there is no form data, show a form.
+    If there is form data, submit it!
     Context:
         common args
         csrf_token
@@ -141,7 +143,7 @@ def contact_submit(request):
     Submits the contact form to the contactform view with recipient list.
     """
     not_yet = [contact_info().email]
-    recipients = ['decode72@decode72.com']
+    recipients = ['zack@decode72.com']
     args = common_args()
     submit_results = submit_contact_form(request, recipients, settings.DEBUG, redirect_url='/contact')
     args.update(submit_results)

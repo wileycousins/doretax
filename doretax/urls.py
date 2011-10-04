@@ -6,8 +6,8 @@ from doretax.settings import AJAX_VIEW_PREFIX as ajax
 admin.autodiscover()
 
 # custom 404 and 500 handlers
-handler404 = 'doretax.views.doretax_404'
-handler500 = 'doretax.views.doretax_500'
+handler404 = 'views.doretax_404'
+handler500 = 'views.doretax_500'
 
 # basic stuff
 urlpatterns = patterns('',
