@@ -10,5 +10,5 @@ EMAIL_HOST_PASSWORD = "geauxmice"
 #EMAIL_HOST_USER = 'wd40too'
 #EMAIL_HOST_PASSWORD = 'geaux44'
 #EMAIL_PORT = '25'
-#DEFAULT_FROM_EMAIL = "HAL@decode72.com"
-#SERVER_EMAIL = "HAL@decode72.com"
+DEFAULT_FROM_EMAIL = "HAL@decode72.com"
+SERVER_EMAIL = "HAL@decode72.com"
