@@ -117,7 +117,7 @@ class BusinessDetail(models.Model):
     owner = models.ForeignKey(User, blank=True, null=True)
     email = models.EmailField()
     fax = PhoneNumberField(blank=True, null=True, help_text="(optional)")
-    cell = PhoneNumberField(blank=True, null=True, help_text="(optional)")
+    cell = PhoneNumberField(blank=True, null=True, help_text="(optional) to remove from the Contact page, simply leave blank")
     telephone = PhoneNumberField()
     address1 = models.CharField(max_length=100)
     address2 = models.CharField(max_length=100, blank=True, null=True)
