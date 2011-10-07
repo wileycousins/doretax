@@ -7,7 +7,7 @@ from django.template import Context, Template, RequestContext, loader
 from django.views.generic.simple import redirect_to
 from django.views.decorators.csrf import requires_csrf_token
 from doretax import settings
-from biz.models import BusinessDetail, Association, Service, Link
+from biz.models import BusinessDetail, Association, Service, Link, MiscTextSection
 from contactform.utils import submit as submit_contact_form
 from contactform.utils import validation as contact_validation
 from contactform.forms import ContactForm
@@ -19,8 +19,21 @@ def contact_info():
     """
     contact = BusinessDetail.objects.get(name="Dore' & Company") 
     if not contact:
-        contact = BusinessDetail.objects.all()[0]
+        try:
+            contact = BusinessDetail.objects.all()[0]
+        except:
+            return None
     return contact
+
+def right_text():
+    """
+    Returns the right side banner text if available.
+    If not found, return None.
+    """
+    try:
+        return MiscTextSection.objects.all()[0]
+    except:
+        return None
 
 def common_args(ajax=False):
     """
@@ -30,12 +43,14 @@ def common_args(ajax=False):
     STATIC_URL: static url from settings
     year: the year at the time of request
     contact: doretax business contact information
+    right_text: the right side banner text
     base_template: the default base template  
     """
     args = {
                'STATIC_URL' : settings.STATIC_URL,
                'year' : datetime.now().year,
                'contact': contact_info(),
+               'right_text' : right_text(),
                'base_template' : 'base.html',
            }
     if ajax:
