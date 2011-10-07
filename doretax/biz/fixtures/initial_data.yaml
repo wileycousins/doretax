@@ -21,7 +21,7 @@
     is_superuser: false
     last_name: Dore' III
     password: sha1$a38e9$513be2001c94e8aa6642a433dab78c45948e464f
-    user_permissions: [22, 23, 24, 25, 26, 27, 35, 31, 32, 33, 38, 28, 29, 30]
+    user_permissions: [25, 26, 27, 28, 29, 30, 38, 34, 35, 36, 23, 31, 32, 33]
     username: Lloyd
 - model: biz.businessdetail
   pk: 1
