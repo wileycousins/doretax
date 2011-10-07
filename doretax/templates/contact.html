@@ -43,19 +43,15 @@
                 </textarea>
             </div>
             <div id="send">
-                <!--<img src='{{ STATIC_URL }}images/send-button.png'/><img src='{{ STATIC_URL }}images/send-button-hover.png' style='opacity: 0;'/><h2 class="send">send</h2>-->
                 <input type="submit" value="Send" id="submit" class="send">
-
-<!-- hey cole, here's the validation messages. i'm serious about that pie crust, it is awesome - you could probably win in some old time county fair with that crust:
-                {{ invalid_email }}
-                {{ required_email }}
-                {{ required_message }}
-                {{ required_name }}
--->
             </div>
         </fieldset>
     </form>
 	<div id='form-feedback'>
 		<h2></h2>
 	</div>
-</div>{% endblock %}
+</div>
+<script type='text/javascript'>
+    initContatForm({{ invalid_email }},{{ required_email }}, {{ required_message }}, {{ required_name }});
+</script>	
+{% endblock %}

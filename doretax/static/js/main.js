@@ -8,6 +8,10 @@ var isMobile = false;
 var isIE = false;
 var fadeDelay = 600;
 var changing = false;
+var invalidEmail = "";
+var required_email = "";
+var required_message = "";
+var required_name = "";
 
 //Checking for mobile browser
 if (navigator.userAgent.match(/Android/i) ||
@@ -49,7 +53,9 @@ function animateIn(loc){
         type: 'get',
         success: function(data){
             var title = $($(data)[0]).text();
-            $('title').text(title);
+			if (!isIE) {
+				$('title').text(title);
+			}
             var html = '';
             data = $(data);
             for (var i = 0; i < $(data).length; i++) {
@@ -76,27 +82,34 @@ function animateIn(loc){
     });
 }
 
+function initContactForm(invalid_email1, required_email1, required_message1, required_name1){
+	invalid_email = invalid_email1;
+	required_email = required_email1;
+	required_message = required_message1;
+	required_name = required_name1;
+}
+
 function submitContactForm(){
     $('#form-feedback > h2').html('');
     if ($('#name').val() == '' || $('#name').val().search(/[ ]+/g) == 0) {
         $('#name').focus();
-        $('#form-feedback > h2').html('A name is a required...<br/>I need to call you something other than friend.');
+        $('#form-feedback > h2').html(required_name);
     }
     else if ($('#email').val() == '') {
         $('#email').focus();
-        $('#form-feedback > h2').html('An email address is required...<br/>I need to be able to respond to you.');
+        $('#form-feedback > h2').html(required_email);
     }
     else if ($('#email').val().split('@').length < 2) {
         $('#email').focus();
-        $('#form-feedback > h2').html('Sorry but that email is not valid...');
+        $('#form-feedback > h2').html(invalid_email);
     }
     else if ($('#email').val().split('@')[1].split('.').length < 2) {
         $('#email').focus();
-        $('#form-feedback > h2').html('Sorry but that email is not valid...');
+        $('#form-feedback > h2').html(invalid_email);
     }
     else if ($('#comments').val() == '' || $('#comments').val() == 'Message*') {
         $('#comment').focus();
-        $('#form-feedback > h2').html("A message is required...<br/>I need to know what I'll be helping you with.");
+        $('#form-feedback > h2').html(required_mesage);
     }
     else {
         $('#send').trigger('mouseover');
@@ -128,16 +141,32 @@ function watchURLChange(){
 }
 
 function resize(){
+    
+}
+function sizeInit(){
     var diff = 25;
-	var largest = $('.right');
-	if($('.center').height() > $(largest).height()){
-		largest = $('.center');
-		$('.right').height($(largest).height());
+    var largest = $('#container').data('right-height');
+	if(!$('#container').data('right-height')){
+		$('#container').data('right-height',$('.right').height());
 	}
-    if ($(largest).height() + diff > $('#main').height()) {
-        $('#main').height($(largest).height() + diff);
+    if($('.center').height() - diff > largest){
+        largest = $('.center');
     }
-    $('#nav').height($(largest).height() - 10);
+	else{
+		$('.right').height($('#container').data('right-height'));
+		largest = $('.right');
+	}
+    if ($(largest).height() + diff !== $('#main').height()) {
+        $('#main').animate({
+            height: $(largest).height() + diff
+        }, 200);
+        $('#nav').animate({
+            height: $(largest).height() - diff
+        }, 200);
+        $('.right').animate({
+            height: $(largest).height()
+        }, 200);
+    }
 }
 
 function smoothScroll(){
@@ -155,12 +184,13 @@ function smoothScroll(){
 }
 
 function init(){
-    resize();
+    sizeInit();
+//    resize();
     if (isIE) {
-        if (!navigator.userAgent.match('MSIE 9.0')) {
+        if (!navigator.userAgent.match('MSIE 9')) {
             $('#image-banner').width(1000);
         }
-		if (navigator.userAgent.match('MSIE 6.0')) {
+		if (navigator.userAgent.match('MSIE 6')) {
 			$('form').remove();
 		}
         //		if (jQuery.browser.msie.version) {
@@ -261,7 +291,7 @@ function init(){
             }
         }
         else {
-            window.location.href = nextPage;
+			window.location.href = nextPage;
         }
         window.setTimeout(function(){
             animateIn(nextPage);
