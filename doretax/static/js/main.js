@@ -249,7 +249,7 @@ function init(){
                 $(this).val('Message*');
         });
     }
-    $('#send').add('#submit').click(function(){
+    $('#send').click(function(){
         submitContactForm();
     });
     $('input').add('#comments').blur(function(){
