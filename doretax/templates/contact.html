@@ -42,16 +42,18 @@
                     Leave us a message*
                 </textarea>
             </div>
-            <div id="send">
-                <input type="submit" value="Send" id="submit" class="send">
-            </div>
         </fieldset>
     </form>
+        <div id="send">
+            <input type="submit" value="Send" id="submit" class="send">
+        </div>
 	<div id='form-feedback'>
 		<h2></h2>
 	</div>
 </div>
 <script type='text/javascript'>
-    initContatForm({{ invalid_email }},{{ required_email }}, {{ required_message }}, {{ required_name }});
+	jQuery.event.add(window,'load', function(){
+    initContactForm("{{ invalid_email }}", "{{ required_email }}", "{{ required_message }}", "{{ required_name }}");
+	});
 </script>	
 {% endblock %}

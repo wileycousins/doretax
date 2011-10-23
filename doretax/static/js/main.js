@@ -13,6 +13,14 @@ var required_email = "";
 var required_message = "";
 var required_name = "";
 
+
+function initContactForm(invalid_email1, required_email1, required_message1, required_name1){
+    invalid_email = invalid_email1;
+    required_email = required_email1;
+    required_message = required_message1;
+    required_name = required_name1;
+}
+
 //Checking for mobile browser
 if (navigator.userAgent.match(/Android/i) ||
 navigator.userAgent.match(/webOS/i) ||
@@ -82,13 +90,6 @@ function animateIn(loc){
     });
 }
 
-function initContactForm(invalid_email1, required_email1, required_message1, required_name1){
-	invalid_email = invalid_email1;
-	required_email = required_email1;
-	required_message = required_message1;
-	required_name = required_name1;
-}
-
 function submitContactForm(){
     $('#form-feedback > h2').html('');
     if ($('#name').val() == '' || $('#name').val().search(/[ ]+/g) == 0) {
@@ -109,13 +110,13 @@ function submitContactForm(){
     }
     else if ($('#comments').val() == '' || $('#comments').val() == 'Message*') {
         $('#comment').focus();
-        $('#form-feedback > h2').html(required_mesage);
+        $('#form-feedback > h2').html(required_message);
     }
     else {
         $('#send').trigger('mouseover');
         $('#send').unbind();
         $.post('/contact', $('#contact-form-id').serialize(), function(data){
-            $('#form-feedback > h2').text(data);
+            $('div.copy').html(data);
         });
     }
 }
@@ -145,10 +146,10 @@ function resize(){
 }
 function sizeInit(){
     var diff = 25;
-    var largest = $('#container').data('right-height');
 	if(!$('#container').data('right-height')){
 		$('#container').data('right-height',$('.right').height());
 	}
+    var largest = $('#container').data('right-height');
     if($('.center').height() - diff > largest){
         largest = $('.center');
     }

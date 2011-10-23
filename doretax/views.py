@@ -159,7 +159,7 @@ def contact_submit(request):
     """
     not_yet = [contact_info().email]
     recipients = ['decode72@decode72.com']
-    args = common_args()
+    args = common_args(True)
     submit_results = submit_contact_form(request, recipients, settings.DEBUG, redirect_url='/contact')
     args.update(submit_results)
     return render_to_response('contact-response.html', args)
