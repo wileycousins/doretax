@@ -288,6 +288,10 @@ div.right p {
 #footer a:hover {
 	color: #676767;
 }
+
+#comments{
+	color: #333;
+}
 /*#name-email-tel, #message, #send {
     float: left;
 	display: block;

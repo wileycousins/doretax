@@ -244,6 +244,7 @@ function init(){
     });
     $('#comments').val('Message*');
     $('#comments').bind('focus', function(){
+		$('#comments').css('color', '#000000');
         if ($(this).val() == 'Message*') 
             $(this).val('');
     });
