@@ -92,33 +92,50 @@ function animateIn(loc){
 
 function submitContactForm(){
     $('#form-feedback > h2').html('');
+	var pat = /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/;
     if ($('#name').val() == '' || $('#name').val().search(/[ ]+/g) == 0) {
         $('#name').focus();
         $('#form-feedback > h2').html(required_name);
+		sizeInit();
+		return;
     }
     else if ($('#email').val() == '') {
         $('#email').focus();
         $('#form-feedback > h2').html(required_email);
+		sizeInit();
+		return;
     }
     else if ($('#email').val().split('@').length < 2) {
         $('#email').focus();
         $('#form-feedback > h2').html(invalid_email);
+		sizeInit();
+		return;
     }
     else if ($('#email').val().split('@')[1].split('.').length < 2) {
         $('#email').focus();
         $('#form-feedback > h2').html(invalid_email);
+		sizeInit();
+		return;
     }
     else if ($('#comments').val() == '' || $('#comments').val() == 'Message*') {
         $('#comment').focus();
         $('#form-feedback > h2').html(required_message);
+		sizeInit();
+		return;
     }
-    else {
-        $('#send').trigger('mouseover');
-        $('#send').unbind();
-        $.post('/contact', $('#contact-form-id').serialize(), function(data){
-            $('div.copy').html(data);
-        });
+	else if ($('#telephone').val() != ''){
+		if ($('#telephone').val().search(pat) != 0) {
+			$('#telephone').focus();
+			$('#form-feedback > h2').html('Thats not a valid number.<br/>10 digit number please/<br/>e.g.: 123-456-7890');
+			sizeInit();
+			return;
+		}
     }
+	$('#send').trigger('mouseover');
+	$('#send').unbind();
+	$.post('/contact', $('#contact-form-id').serialize(), function(data){
+	    $('div.center').html(data);
+	});
 }
 
 function watchURLChange(){
@@ -232,7 +249,7 @@ function init(){
                 $(this).val('Message*');
         });
     }
-    $('#send').click(function(){
+    $('#send').add('#submit').click(function(){
         submitContactForm();
     });
     $('input').add('#comments').blur(function(){
