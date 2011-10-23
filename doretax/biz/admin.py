@@ -1,4 +1,4 @@
-from biz.models import Association, AssocPosition, Service, Link, BusinessDetail
+from biz.models import Association, AssocPosition, Service, Link, BusinessDetail, MiscTextSection
 from django.contrib import admin
 
 class AssocPositionInline(admin.TabularInline):
@@ -35,8 +35,12 @@ class BusinessDetailAdmin(admin.ModelAdmin):
         }),
     )
     
+class MiscTextSectionAdmin(admin.ModelAdmin):
+    exclude = ['descriptor']
+    search_fields = ['title', 'text', 'descriptor']    
 
 admin.site.register(Association, AssociationAdmin)
 admin.site.register(Service, ServiceAdmin)
 admin.site.register(Link, LinkAdmin)
 admin.site.register(BusinessDetail, BusinessDetailAdmin)
+admin.site.register(MiscTextSection, MiscTextSectionAdmin)

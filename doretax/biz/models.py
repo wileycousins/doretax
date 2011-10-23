@@ -3,6 +3,24 @@ from django.contrib.localflavor.us.models import USStateField, PhoneNumberField,
 from django.contrib.localflavor.us.us_states import STATE_CHOICES
 from django.contrib.auth.models import User
 
+class MiscTextSection(models.Model):
+    """
+    Miscellaneous section of text with a title.
+    """
+    title = models.CharField(max_length=100, unique=True)
+    text = models.TextField()
+    descriptor = models.CharField(max_length=100, null=True, blank=True, help_text="Can be used for simple organization e.g. 'right banner text'.")
+    
+    def __unicode__(self):
+        if self.descriptor:
+            return "%s: %s" % (self.descriptor, self.title)
+        else:
+            return self.title
+    
+    class Meta:
+        verbose_name = "Miscellaneous Text Section"
+        verbose_name_plural = "Miscellaneous Text Sections"
+    
 
 class AssociationManager(models.Manager):
     def professional(self):
@@ -99,7 +117,7 @@ class BusinessDetail(models.Model):
     owner = models.ForeignKey(User, blank=True, null=True)
     email = models.EmailField()
     fax = PhoneNumberField(blank=True, null=True, help_text="(optional)")
-    cell = PhoneNumberField(blank=True, null=True, help_text="(optional)")
+    cell = PhoneNumberField(blank=True, null=True, help_text="(optional) to remove from the Contact page, simply leave blank")
     telephone = PhoneNumberField()
     address1 = models.CharField(max_length=100)
     address2 = models.CharField(max_length=100, blank=True, null=True)
