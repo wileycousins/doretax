@@ -181,7 +181,7 @@ div.page-heading-text{
 	padding-bottom: 30px;
 	border-bottom: 1px solid #221F72;
 }
-div.page-heading-text p{
+div.page-heading-text p:not(.normal){
 	font-size: 1.4em;
 	line-height: 1.4em;
 	color: #221F72;
@@ -203,7 +203,7 @@ div.copy h2{
 	font-family: adobe-garamond-pro, serif;
 }
 
-div.copy p{
+div.copy p, .normal{
 	color: #676767;
 	font-size: 1em;
 	line-height: 1.6em;

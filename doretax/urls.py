@@ -22,9 +22,10 @@ urlpatterns = patterns('',
 urlpatterns += patterns('',
     (r'^(?P<ajax>(%s)?)$' % ajax, 'views.home'),
     (r'^(?P<ajax>(%s)?)about$' % ajax, 'views.about'),
-    (r'^(?P<ajax>(%s)?)client-center$' % ajax, 'views.client_center'),
+    (r'^(?P<ajax>(%s)?)client-resources' % ajax, 'views.client_resources'),
     (r'^(?P<ajax>(%s)?)community$' % ajax, 'views.community'),
     (r'^(?P<ajax>(%s)?)contact$' % ajax, 'views.contact'),
+    (r'^(?P<ajax>(%s)?)privacy$' % ajax, 'views.privacy'),
 )
 
 if DEBUG:
