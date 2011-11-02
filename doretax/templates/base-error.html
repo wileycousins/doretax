@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
+        <meta name='description' content='' />
+        <meta name='keywords' content='' />
+        <link type='text/css' rel='stylesheet' href='{{ STATIC_URL }}css/styles.css'/>
+		<link type='text/css' rel='stylesheet' href='{{ STATIC_URL }}css/ie.css'/>
+        <link type='image/x-icon' rel="icon" href='{{ STATIC_URL }}images/fav.ico' />
+		<script type="text/javascript" src="http://use.typekit.com/fgu4koc.js"></script>
+<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+        <title>{% block title %}{% endblock %}Dor&eacute; &amp; Company</title>
+        {% include "scripts.html" %}
+    </head>
+    <body >
+        <div id='container'>
+            {% include "header.html" %}
+            <div id='main'>
+				<div id='nav'>
+				</div>
+                <div class='center'>
+                    {% block center %}{% endblock %}
+                </div>
+                <div class='right'>
+                </div>
+            </div>
+            {% include "footer.html" %}
+        </div>
+    </body>
+</html>

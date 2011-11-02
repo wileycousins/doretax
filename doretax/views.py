@@ -110,7 +110,7 @@ def about(request, ajax):
     args['services'] = Service.objects.all()
     return render_to_response('about.html', args)
     
-def client_center(request, ajax):
+def client_resources(request, ajax):
     """
     Renders the client center page.
     Context:
@@ -119,7 +119,7 @@ def client_center(request, ajax):
     """
     args = common_args(ajax)    
     args['links'] = Link.objects.client()
-    return render_to_response('client-center.html', args)
+    return render_to_response('client-resources.html', args)
     
 def community(request, ajax):
     """
@@ -133,6 +133,15 @@ def community(request, ajax):
     args['assocs'] = Association.objects.civic()
     args['links'] = Link.objects.community()
     return render_to_response('community.html', args)
+
+def privacy(request, ajax):
+    """
+    Renders the privacy page.
+    Context:
+        common args
+    """
+    args = common_args(ajax)
+    return render_to_response('privacy.html', args)
     
 def contact(request, ajax):
     """
@@ -159,7 +168,7 @@ def contact_submit(request):
     """
     not_yet = [contact_info().email]
     recipients = ['decode72@decode72.com']
-    args = common_args()
+    args = common_args(True)
     submit_results = submit_contact_form(request, recipients, settings.DEBUG, redirect_url='/contact')
     args.update(submit_results)
     return render_to_response('contact-response.html', args)

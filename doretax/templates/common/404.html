@@ -1,4 +1,4 @@
-{% extends base_template|default:"base.html" %}
+{% extends "base-error.html" %}
 
 {% block title %}Page not found | {% endblock %}
 
@@ -10,6 +10,6 @@
 </p>	
 </div>
 <div class='copy'>
-    <h2 class='all-caps'><a href="/">return home</a></h2>
+    <h2 class='all-caps'><a class='no-link' href="/">return home</a></h2>
 </div>
 {% endblock %}
