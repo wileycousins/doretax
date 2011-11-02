@@ -248,6 +248,7 @@ div.right p {
 	font-family: adobe-garamond-pro, serif;
 }
 #footer{
+	position: relative;
 	float: left;
 	margin: 0;
 	margin-top: 0px;
@@ -279,7 +280,14 @@ div.right p {
 	width: 100px;
 	font-family: adobe-garamond-pro, serif;
 }
-
+#footer #d72-link {
+	position: absolute;
+	top:0;
+	left: 5px;
+}
+#footer #d72-link h3 a{
+	font-variant: small-caps;
+}
 #footer h3, #footer a{
 	font-size: .9em;
 	font-weight: 700;
