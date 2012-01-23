@@ -17,7 +17,7 @@ def contact_info():
     Returns the contact info for Dore' & Company.
     If that is not found, return the first company's contact info.
     """
-    contact = BusinessDetail.objects.get(name="Dore' & Company") 
+    contact = BusinessDetail.objects.get(name="Dore' & Company")
     if not contact:
         try:
             contact = BusinessDetail.objects.all()[0]
@@ -166,8 +166,7 @@ def contact_submit(request):
     """
     Submits the contact form to the contactform view with recipient list.
     """
-    not_yet = [contact_info().email]
-    recipients = ['admin@doretax.com']
+    recipients = [contact_info().email]
     args = common_args(True)
     submit_results = submit_contact_form(request, recipients, settings.DEBUG, redirect_url='/contact')
     args.update(submit_results)

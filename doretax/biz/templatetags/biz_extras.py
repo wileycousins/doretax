@@ -94,7 +94,6 @@ def phone_paren(value, delimiter):
     elif len(newvalue) == 10:
         return "(%s) %s%s%s" % (newvalue[:3], newvalue[3:6], delimiter, newvalue[6:])
     else:
-        print len(newvalue)
         return value
 
 @register.filter
